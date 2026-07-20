@@ -1,0 +1,3 @@
+Contact: mailto:bonjour@regienautique.fr
+Preferred-Languages: fr, en
+Canonical: https://regienautique.fr/.well-known/security.txt

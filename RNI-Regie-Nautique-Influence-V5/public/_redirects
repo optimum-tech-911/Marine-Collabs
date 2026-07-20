@@ -1,0 +1,11 @@
+/createurs /creators 301
+/createurs/* /creators/:splat 301
+/pour-les-marques /for-brands 301
+/creer-une-campagne /campaign-builder 301
+/campagne /campaign-builder 301
+/cas-clients /case-studies 301
+/a-propos /about 301
+/rejoindre-le-reseau /join-the-network 301
+/methodologie /methodology 301
+/reseau /creators 301
+/* /index.html 200

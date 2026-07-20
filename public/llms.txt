@@ -1,0 +1,14 @@
+# Marine Collabs
+
+Marine Collabs est une agence d’influence spécialisée dans le nautisme et les univers maritimes. La plateforme présente un réseau sélectionné de créateurs, des solutions de campagne, une méthodologie de métriques et un constructeur de brief.
+
+## Pages principales
+- / : positionnement de l’agence et fonctionnement
+- /creators : roster des créateurs maritimes
+- /solutions : objectifs et formats de campagne
+- /for-brands : parcours destiné aux marques
+- /methodology : méthodologie, sources et niveaux de preuve
+- /campaign-builder : générateur de brief local
+
+## Données
+Les audiences cumulées ne constituent pas une audience unique. Les estimations de vues sont indicatives et doivent être remplacées par des données créateur vérifiées avant engagement commercial. Les coordonnées privées, tarifs et données d’audience détaillées ne sont pas exposés publiquement.

@@ -1,0 +1,15 @@
+/createurs /fr/createurs/ 302
+/createurs/* /fr/createurs/:splat 302
+/pour-les-marques /fr/pour-les-marques/ 302
+/creer-une-campagne /fr/creer-une-campagne/ 302
+/campagne /fr/creer-une-campagne/ 302
+/cas-clients /fr/cas-clients/ 302
+/a-propos /fr/a-propos/ 302
+/rejoindre-le-reseau /fr/rejoindre-le-reseau/ 302
+/methodologie /fr/methodologie/ 302
+/reseau /fr/createurs/ 302
+/creators /en/creators/ 302
+/creators/* /en/creators/:splat 302
+/for-brands /en/for-brands/ 302
+/campaign-builder /en/build-a-campaign/ 302
+/* /index.html 200

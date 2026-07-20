@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm install *)",
+      "Bash(npm config *)",
+      "Read(//Users/optimumtech/**)",
+      "Bash(npm run *)",
+      "Bash(python3 -)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(seq 1 30)",
+      "Bash(curl -sf http://localhost:5173)",
+      "Bash(break)",
+      "Bash(sleep 0.5)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173)",
+      "Bash(node shoot.mjs)",
+      "Bash(tail -5 /tmp/vite-dev.log; curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173 || true; pgrep -fl vite | head)",
+      "Read(//private/tmp/**)",
+      "Bash(pkill -f \"nautic-creator-network/node_modules/.bin/vite\")"
+    ]
+  }
+}
