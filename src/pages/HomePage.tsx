@@ -16,7 +16,6 @@ import { ContactLink } from '../components/ContactLink';
 import { CountUp, CountUpText } from '../components/CountUp';
 import { CreatorCard } from '../components/CreatorCard';
 import { CreatorMarquee } from '../components/CreatorMarquee';
-import { FieldworkGallery } from '../components/FieldworkGallery';
 import { MarineNetworkMap } from '../components/MarineNetworkMap';
 import { SectionReveal } from '../components/SectionReveal';
 import { creators } from '../data/creators';
@@ -72,8 +71,6 @@ export function HomePage() {
       <CreatorMarquee />
 
       <MarineNetworkMap />
-
-      <FieldworkGallery />
 
       <section className="home-v4-sector-rail" aria-label="Secteurs accompagnés">
         <div>{[...sectors, ...sectors].map((sector, index) => <span key={`${sector}-${index}`}><Sparkles size={13}/>{sector}</span>)}</div>
