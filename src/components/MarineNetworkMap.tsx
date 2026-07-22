@@ -13,7 +13,19 @@ type PinPoint = { x: number; y: number };
 
 const mapWidth = 960;
 const mapHeight = 550;
-const pinSeparation = 62;
+const pinSeparation = 44;
+const pinCandidates: PinShift[] = [
+  [0, 0],
+  [0, -28], [28, -28], [40, 0], [28, 28], [0, 40], [-28, 28], [-40, 0], [-28, -28],
+  [0, -52], [37, -37], [52, 0], [37, 37], [0, 52], [-37, 37], [-52, 0], [-37, -37],
+];
+
+// Ambient network signals only. They are intentionally not tied to creator
+// records and never communicate an additional creator count or location.
+const networkSignals = [
+  [12, 31], [20, 48], [27, 25], [33, 67], [39, 42], [45, 18], [52, 72], [58, 36],
+  [64, 22], [70, 61], [76, 34], [82, 74], [88, 48], [93, 27], [24, 78], [55, 86],
+] as const;
 
 function mapPoint(longitude: number, latitude: number): PinPoint {
   return {
@@ -24,53 +36,52 @@ function mapPoint(longitude: number, latitude: number): PinPoint {
 
 function computePinShifts(items: typeof creators): Record<string, PinShift> {
   const anchors = items.map((creator) => mapPoint(creator.mapLocation.longitude, creator.mapLocation.latitude));
-  const placed = anchors.map((point) => ({ ...point }));
+  const placed: Array<{ point: PinPoint; shift: PinShift }> = [];
+  const shiftsBySlug: Record<string, PinShift> = {};
+  const placementOrder = items.map((creator, index) => ({ creator, index, anchor: anchors[index] ?? { x: 0, y: 0 } })).sort((first, second) => {
+    const priority = (creator: typeof creators[number]) => {
+      if (creator.slug === 'best-boat-deals') return -1;
+      if (creator.mapLocation.precision === 'place') return 0;
+      if (creator.mapLocation.precision === 'route') return 1;
+      if (creator.mapLocation.precision === 'region') return 2;
+      return 3;
+    };
+    return priority(first.creator) - priority(second.creator);
+  });
 
-  for (let pass = 0; pass < 120; pass += 1) {
-    for (let first = 0; first < placed.length; first += 1) {
-      for (let second = first + 1; second < placed.length; second += 1) {
-        const firstPoint = placed[first];
-        const secondPoint = placed[second];
-        if (!firstPoint || !secondPoint) continue;
+  placementOrder.forEach(({ creator, anchor }) => {
+    let bestShift: PinShift = [0, 0];
+    let bestScore = Number.POSITIVE_INFINITY;
 
-        let deltaX = secondPoint.x - firstPoint.x;
-        let deltaY = secondPoint.y - firstPoint.y;
-        let distance = Math.hypot(deltaX, deltaY);
+    pinCandidates.forEach((candidate) => {
+      const point = {
+        x: Math.max(34, Math.min(mapWidth - 34, anchor.x + candidate[0])),
+        y: Math.max(38, Math.min(mapHeight - 38, anchor.y + candidate[1])),
+      };
+      let score = Math.hypot(candidate[0], candidate[1]) * 0.35;
 
-        if (distance < 0.01) {
-          const angle = ((first * 47 + second * 73) % 360) * (Math.PI / 180);
-          deltaX = Math.cos(angle);
-          deltaY = Math.sin(angle);
-          distance = 1;
-        }
+      placed.forEach(({ point: otherPoint }) => {
+        const distance = Math.hypot(point.x - otherPoint.x, point.y - otherPoint.y);
+        if (distance < pinSeparation) score += 10000 + (pinSeparation - distance) * 100;
+      });
 
-        if (distance >= pinSeparation) continue;
-        const push = (pinSeparation - distance) / 2;
-        deltaX /= distance;
-        deltaY /= distance;
-        firstPoint.x -= deltaX * push;
-        firstPoint.y -= deltaY * push;
-        secondPoint.x += deltaX * push;
-        secondPoint.y += deltaY * push;
+      if (score < bestScore) {
+        bestScore = score;
+        bestShift = candidate;
       }
-    }
-
-    placed.forEach((point, index) => {
-      const anchor = anchors[index];
-      if (!anchor) return;
-      // A soft pull keeps every portrait visually tied to its documented zone.
-      point.x += (anchor.x - point.x) * 0.018;
-      point.y += (anchor.y - point.y) * 0.018;
-      point.x = Math.max(34, Math.min(mapWidth - 34, point.x));
-      point.y = Math.max(38, Math.min(mapHeight - 38, point.y));
     });
-  }
 
-  return Object.fromEntries(items.map((creator, index) => {
-    const anchor = anchors[index] ?? { x: 0, y: 0 };
-    const point = placed[index] ?? anchor;
-    return [creator.slug, [Math.round(point.x - anchor.x), Math.round(point.y - anchor.y)] as PinShift];
-  }));
+    placed.push({
+      point: {
+        x: Math.max(34, Math.min(mapWidth - 34, anchor.x + bestShift[0])),
+        y: Math.max(38, Math.min(mapHeight - 38, anchor.y + bestShift[1])),
+      },
+      shift: bestShift,
+    });
+    shiftsBySlug[creator.slug] = bestShift;
+  });
+
+  return shiftsBySlug;
 }
 
 function projectedStyle(longitude: number, latitude: number, shift: PinShift = [0, 0]): CSSProperties {
@@ -107,21 +118,26 @@ export function MarineNetworkMap() {
           </div>
         </div>
 
-        <div className="marine-network-map__surface" aria-label={t('Carte des régions représentées dans le réseau')}>
-          <div className="marine-network-map__grid" aria-hidden="true" />
-          <img className="marine-network-map__world marine-network-map__world--true" src={worldMapUrl} alt="" aria-hidden="true" />
-          <div className="marine-network-map__topline"><span>{t('Créateurs du réseau')}</span></div>
-          <MarineRadar className="marine-network-map__radar" />
-          <svg className="marine-network-map__routes" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path d="M80 350C220 140 360 130 485 260S730 350 935 150"/><path d="M70 410C270 460 440 385 560 290S735 160 930 300"/></svg>
-          {creators.map((creator) => (
-            <span className="marine-network-map__pin-group" key={creator.slug} aria-hidden="true">
-              <span className="marine-network-map__anchor" style={projectedStyle(creator.mapLocation.longitude, creator.mapLocation.latitude)}><i /></span>
-              <span className="marine-network-map__pin" style={projectedStyle(creator.mapLocation.longitude, creator.mapLocation.latitude, pinShifts[creator.slug])}>
-                <span className="marine-network-map__pin-pulse" />
-                <img src={creator.image} alt="" loading="lazy" />
+        <div className="marine-network-map__viewport" role="region" tabIndex={0} aria-label={t('Carte des régions représentées dans le réseau')}>
+          <div className="marine-network-map__surface">
+            <div className="marine-network-map__grid" aria-hidden="true" />
+            <img className="marine-network-map__world marine-network-map__world--true" src={worldMapUrl} alt="" aria-hidden="true" />
+            <div className="marine-network-map__topline"><span>{t('Créateurs du réseau')}</span></div>
+            <MarineRadar className="marine-network-map__radar" />
+            <div className="marine-network-map__signals" aria-hidden="true">
+              {networkSignals.map(([x, y], index) => <i key={`${x}-${y}-${index}`} style={{ '--signal-x': `${x}%`, '--signal-y': `${y}%` } as CSSProperties} />)}
+            </div>
+            <svg className="marine-network-map__routes" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path d="M80 350C220 140 360 130 485 260S730 350 935 150"/><path d="M70 410C270 460 440 385 560 290S735 160 930 300"/></svg>
+            {creators.map((creator) => (
+              <span className="marine-network-map__pin-group" key={creator.slug} aria-hidden="true">
+                <span className="marine-network-map__anchor" style={projectedStyle(creator.mapLocation.longitude, creator.mapLocation.latitude)}><i /></span>
+                <span className="marine-network-map__pin" style={projectedStyle(creator.mapLocation.longitude, creator.mapLocation.latitude, pinShifts[creator.slug])}>
+                  <span className="marine-network-map__pin-pulse" />
+                  <img src={creator.image} alt="" loading="lazy" />
+                </span>
               </span>
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

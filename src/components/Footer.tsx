@@ -16,7 +16,17 @@ export function Footer() {
       <div className="footer-links">
         <div><p className="footer-label">{fr ? 'Explorer' : 'Explore'}</p><Link to={path('creators')}>{fr ? 'Réseau de créateurs' : 'Creator network'}</Link><Link to={path('solutions')}>Solutions</Link><Link to={path('brands')}>{fr ? 'Pour les marques' : 'For brands'}</Link><Link to={path('join')}>{fr ? 'Rejoindre le réseau' : 'Join the network'}</Link><Link to={path('selection')}>{fr ? 'Comparer ma sélection' : 'Compare my shortlist'}</Link></div>
         <div><p className="footer-label">{fr ? 'Agence' : 'Agency'}</p><Link to={path('about')}>{fr ? 'À propos' : 'About'}</Link><Link to={path('methodology')}>{fr ? 'Méthodologie & sources' : 'Methodology & sources'}</Link><a href={brand.whatsappUrl} target="_blank" rel="noreferrer">WhatsApp Business</a><a href={`mailto:${brand.email}`}>{brand.email}</a><span>{brand.location}</span></div>
-        <div><p className="footer-label">{fr ? 'Réseaux & contact' : 'Social & contact'}</p>{brand.socials.instagram ? <a href={brand.socials.instagram} target="_blank" rel="noreferrer"><Camera size={16}/> Instagram</a> : null}{brand.socials.linkedin ? <a href={brand.socials.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={16}/> LinkedIn</a> : null}<a href={brand.phoneUrl}>{fr ? 'Appeler Adrien' : 'Call Adrien'} · {brand.phone}</a><a href={brand.whatsappUrl} target="_blank" rel="noreferrer">WhatsApp Business</a><a href={`mailto:${brand.email}`}>{brand.email}</a><LanguageSwitcher /></div>
+        <div>
+          <p className="footer-label">{fr ? 'Réseaux de diffusion' : 'Distribution channels'}</p>
+          <div className="footer-platforms" aria-label={fr ? 'Réseaux sociaux couverts' : 'Social platforms covered'}>
+            <span><b aria-hidden="true">IG</b>Instagram</span>
+            <span><b aria-hidden="true">TK</b>TikTok</span>
+            <span><b aria-hidden="true">f</b>Facebook</span>
+            <span><b aria-hidden="true">▶</b>YouTube</span>
+          </div>
+          <p className="footer-label footer-label--contact">{fr ? 'Contact' : 'Contact'}</p>
+          {brand.socials.instagram ? <a href={brand.socials.instagram} target="_blank" rel="noreferrer"><Camera size={16}/> Instagram</a> : null}{brand.socials.linkedin ? <a href={brand.socials.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={16}/> LinkedIn</a> : null}<a href={brand.phoneUrl}>{fr ? 'Appeler Adrien' : 'Call Adrien'} · {brand.phone}</a><a href={brand.whatsappUrl} target="_blank" rel="noreferrer">WhatsApp Business</a><a href={`mailto:${brand.email}`}>{brand.email}</a><LanguageSwitcher />
+        </div>
       </div>
     </div>
     <div className="container footer-bottom"><p>© {new Date().getFullYear()} {brand.name}. {fr ? 'Tous droits réservés.' : 'All rights reserved.'}</p><div><Link to={path('privacy')}>{fr ? 'Confidentialité' : 'Privacy'}</Link><Link to={path('terms')}>{fr ? 'Conditions' : 'Terms'}</Link><Link to={path('legal')}>{fr ? 'Mentions légales' : 'Legal notice'}</Link></div></div>

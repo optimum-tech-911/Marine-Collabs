@@ -1,17 +1,18 @@
-import { Bookmark, Check, Eye, Layers3, Users } from 'lucide-react';
+import { ArrowRight, Bookmark, Check, Eye, Layers3, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useShortlist } from '../context/ShortlistContext';
 import { categoryFr } from '../lib/category';
 import { formatCompact, formatRange } from '../lib/format';
 import type { Creator } from '../types';
 import { EvidenceBadge } from './EvidenceBadge';
 
-export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: number }) {
+export function CreatorCard({ creator, index = 0, compact = false }: { creator: Creator; index?: number; compact?: boolean }) {
   const { hasCreator, toggleCreator } = useShortlist();
   const selected = hasCreator(creator.slug);
 
   return (
     <article
-      className="creator-card-v4"
+      className={`creator-card-v4${compact ? ' creator-card-v4--compact' : ''}`}
     >
       <div className="creator-card-v4__media">
         <span className="creator-card-v4__avatar-ring">
@@ -33,11 +34,14 @@ export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: 
           <button type="button" className={`creator-card-v4__save${selected ? ' is-selected' : ''}`} onClick={() => toggleCreator(creator.slug)} aria-pressed={selected} aria-label={selected ? `Retirer ${creator.displayName}` : `Ajouter ${creator.displayName}`}><Bookmark size={18} fill={selected ? 'currentColor' : 'none'}/></button>
         </div>
         <p className="creator-card-v4__headline">{creator.headline}</p>
-        <div className="creator-card-v4__metrics">
+        {!compact ? <div className="creator-card-v4__metrics">
           <div><Users size={17}/><span><strong>{formatCompact(creator.followers)}</strong><small>abonnés</small></span></div>
           <div><Eye size={17}/><span><strong>{formatRange(creator.viewEstimate.low, creator.viewEstimate.high)}</strong><small>{creator.viewEstimate.evidence === 'verified' ? 'vues / 30 j' : 'vues estimées / 30 j'}</small></span></div>
+        </div> : null}
+        <div className={`creator-card-v4__footer${compact ? ' creator-card-v4__footer--compact' : ''}`}>
+          {!compact ? <EvidenceBadge evidence={creator.viewEstimate.evidence}/> : null}
+          <Link to="/creators" className="creator-card-v4__more">Voir plus <ArrowRight size={15}/></Link>
         </div>
-        <div className="creator-card-v4__footer"><EvidenceBadge evidence={creator.viewEstimate.evidence}/></div>
       </div>
     </article>
   );

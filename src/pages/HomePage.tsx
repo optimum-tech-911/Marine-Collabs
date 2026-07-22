@@ -104,8 +104,8 @@ export function HomePage() {
         <div className="container home-v4-manifesto__inner">
           <SectionReveal>
             <p className="eyebrow eyebrow--light">NOTRE CONVICTION</p>
-            <h2>« Une campagne crédible commence dans le réel. »</h2>
-            <p>Des créateurs parlent de votre marque à leur communauté. Krew Media sélectionne les bonnes voix, encadre les contenus et orchestre leur diffusion — sans limite de créateurs ni de frontières.</p>
+            <h2>« Une campagne crédible commence par une vraie raison de parler de votre produit. »</h2>
+            <p>Nous sélectionnons des créateurs dont l’univers, la communauté et le contexte sont cohérents avec votre marque. Krew Media encadre les contenus et orchestre leur diffusion pour que la recommandation reste naturelle.</p>
             <Link className="text-link text-link--light" to="/for-brands">Voir comment une campagne est construite <ArrowRight size={17}/></Link>
           </SectionReveal>
         </div>
@@ -137,7 +137,7 @@ export function HomePage() {
             <div><p className="eyebrow eyebrow--light">LE RÉSEAU</p><h2>Aperçu de nos créateurs.</h2></div>
             <div><Link className="text-link text-link--light" to="/creators">Voir le réseau <ArrowRight size={17}/></Link></div>
           </SectionReveal>
-          <div className="creator-grid creator-grid--three home-v4-roster__grid">{featured.map((creator, index) => <CreatorCard creator={creator} index={index} key={creator.slug}/>)}</div>
+          <div className="creator-grid creator-grid--three home-v4-roster__grid">{featured.map((creator, index) => <CreatorCard compact creator={creator} index={index} key={creator.slug}/>)}</div>
         </div>
       </section>
 

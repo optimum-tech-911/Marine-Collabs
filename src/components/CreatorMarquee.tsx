@@ -38,7 +38,6 @@ export function CreatorMarquee() {
     <section className="creator-marquee" aria-labelledby="creator-marquee-title">
       <div className="container creator-marquee__heading">
         <div><p className="eyebrow">LE RÉSEAU, EN MOUVEMENT</p><h2 id="creator-marquee-title">Nos créateurs. Leurs audiences. Votre objectif.</h2></div>
-        <p>Des profils réels, avec des chiffres dont le niveau de preuve reste visible. Survolez le ruban pour le mettre en pause.</p>
       </div>
       <div className="creator-marquee__rails" aria-label="Profils créateurs défilants">
         <MarqueeRail items={first} />

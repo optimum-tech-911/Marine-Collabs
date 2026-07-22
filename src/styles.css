@@ -6279,7 +6279,7 @@ body { background: var(--paper); color: #07334a; }
   top: 0;
   left: 0;
   width: var(--pin-distance);
-  height: 1px;
+  height: 2px;
   content: '';
   background: rgba(174, 247, 237, .72);
   box-shadow: 0 0 7px rgba(102, 236, 218, .28);
@@ -6289,15 +6289,19 @@ body { background: var(--paper); color: #07334a; }
 .marine-network-map__anchor i {
   position: absolute;
   z-index: 1;
-  top: -4px;
-  left: -4px;
-  width: 8px;
-  height: 8px;
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
   border: 2px solid #073446;
   border-radius: 50%;
   background: #a9fff2;
   box-shadow: 0 0 0 3px rgba(102, 236, 218, .18), 0 0 10px rgba(102, 236, 218, .5);
 }
+.marine-network-map__signals { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.marine-network-map__signals i { position: absolute; top: var(--signal-y); left: var(--signal-x); width: 5px; height: 5px; border: 1px solid rgba(211, 255, 248, .72); border-radius: 50%; background: #61ecd9; box-shadow: 0 0 0 4px rgba(97, 236, 217, .1), 0 0 12px rgba(97, 236, 217, .42); transform: translate(-50%, -50%); }
+.marine-network-map__signals i:nth-child(3n) { width: 7px; height: 7px; opacity: .8; }
+.marine-network-map__signals i:nth-child(4n) { opacity: .55; }
 .marine-network-map__pin {
   --pin-x: 50%;
   --pin-y: 50%;
@@ -6474,4 +6478,50 @@ body { background: var(--paper); color: #07334a; }
 @media (prefers-reduced-motion: reduce) {
   .scroll-section-enter,
   .section-reveal { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
+}
+
+/* Client review refinements: keep the homepage preview short and the map
+   readable on narrow screens without changing roster data. */
+.creator-marquee__heading { grid-template-columns: 1fr; }
+.creator-card-v4--compact .creator-card-v4__headline { display: none; }
+.creator-card-v4--compact .creator-card-v4__body { padding-bottom: 20px; }
+.creator-card-v4__footer--compact { justify-content: flex-end; }
+.creator-card-v4__more { display: inline-flex; align-items: center; gap: 6px; color: var(--sea); font-size: .78rem; font-weight: 800; }
+.creator-card-v4__more svg { transition: transform .2s ease; }
+.creator-card-v4__more:hover svg { transform: translateX(4px); }
+.marine-network-map__heading > * { min-width: 0; }
+.marine-network-map__heading h2 { overflow-wrap: anywhere; }
+.footer-platforms { display: grid; gap: 9px; }
+.footer-platforms > span { display: inline-flex; align-items: center; gap: 8px; color: var(--muted-dark); font-size: .82rem; }
+.footer-platforms b { width: 22px; height: 22px; display: inline-grid; place-items: center; border: 1px solid rgba(141,221,208,.45); border-radius: 6px; color: var(--sea); font-size: .58rem; letter-spacing: -.03em; }
+.footer-label--contact { margin-top: 10px; }
+
+@media (max-width: 720px) {
+  .marine-network-map__heading h2 { font-size: clamp(2.05rem, 10.5vw, 3.4rem); }
+  .marine-network-map__viewport { overflow-x: auto; overflow-y: hidden; border-radius: 22px; touch-action: pan-x; scroll-behavior: smooth; scrollbar-color: rgba(141, 221, 208, .8) transparent; -webkit-overflow-scrolling: touch; }
+  .marine-network-map__surface { width: 960px; min-width: 960px; min-height: 550px; border-radius: 22px; }
+}
+
+/* Remove the decorative checkerboard treatment across the platform. Editorial
+   layouts may still use CSS grid; only the visible square texture is disabled. */
+.page-hero__grid,
+.home-hero__grid,
+.creator-profile-hero__grid,
+.rni-hero__grid,
+.home-v4-hero__grid,
+.creators-v4-hero__grid,
+.brands-v4-hero__grid,
+.solutions-v4-hero__grid,
+.about-v4-hero__grid,
+.contact-v4-hero__grid,
+.join-v4-hero__grid,
+.builder-v4-hero__grid,
+.selection-v5-hero__grid,
+.methodology-v5-hero__grid,
+.marine-network-map__grid {
+  display: none !important;
+}
+
+.home-v4-contact::after {
+  display: none !important;
 }
