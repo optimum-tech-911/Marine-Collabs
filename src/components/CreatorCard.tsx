@@ -1,8 +1,6 @@
 import { ArrowUpRight, Bookmark, Check, Eye, Layers3, Users } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { useShortlist } from '../context/ShortlistContext';
-import { getEditorialMedia } from '../data/editorialMedia';
 import { categoryFr } from '../lib/category';
 import { formatCompact, formatRange } from '../lib/format';
 import type { Creator } from '../types';
@@ -11,20 +9,15 @@ import { EvidenceBadge } from './EvidenceBadge';
 export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: number }) {
   const { hasCreator, toggleCreator } = useShortlist();
   const selected = hasCreator(creator.slug);
-  const reduced = useReducedMotion();
-  const secondaryImage = getEditorialMedia(creator.slug, creator.image)[1] ?? creator.image;
 
   return (
-    <motion.article
+    <article
       className="creator-card-v4"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: .55, delay: Math.min(index * .045, .22), ease: [0.22, 1, 0.36, 1] }}
     >
       <Link className="creator-card-v4__media" to={`/creators/${creator.slug}`}>
-        <img className="creator-card-v4__image creator-card-v4__image--primary" src={creator.image} alt={`Visuel éditorial maritime pour ${creator.displayName}`} loading="lazy" />
-        <img className="creator-card-v4__image creator-card-v4__image--secondary" src={secondaryImage} alt="" loading="lazy" />
+        <span className="creator-card-v4__avatar-ring">
+          <img className="creator-card-v4__image creator-card-v4__image--primary" src={creator.image} alt={`Photo de profil publique de ${creator.displayName}`} loading="lazy" decoding="async" />
+        </span>
         <span className="creator-card-v4__veil" aria-hidden="true" />
         <div className="creator-card-v4__media-top">
           <span className="creator-card-v4__index">{String(index + 1).padStart(2, '0')}</span>
@@ -48,6 +41,6 @@ export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: 
         </div>
         <div className="creator-card-v4__footer"><EvidenceBadge evidence={creator.viewEstimate.evidence}/><Link to={`/creators/${creator.slug}`}>Découvrir <ArrowUpRight size={15}/></Link></div>
       </div>
-    </motion.article>
+    </article>
   );
 }

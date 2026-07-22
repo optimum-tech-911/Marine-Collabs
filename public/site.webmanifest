@@ -1,13 +1,13 @@
 {
-  "name": "Marine Collabs — Influence maritime",
-  "short_name": "Marine Collabs",
+  "name": "Krew Media — Influence maritime",
+  "short_name": "Krew Media",
   "description": "Agence d’influence spécialisée dans le nautisme et l’univers maritime.",
   "lang": "fr-FR",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#073f58",
-  "theme_color": "#0b6f86",
+  "background_color": "#06131b",
+  "theme_color": "#06131b",
   "icons": [
     {
       "src": "/icon-192.png",

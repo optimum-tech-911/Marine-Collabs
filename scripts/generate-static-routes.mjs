@@ -6,13 +6,15 @@ const distDir = path.join(root, 'dist');
 const brandSource = await readFile(path.join(root, 'src/config/brand.ts'), 'utf8');
 const brandValue = (pattern, fallback = '') => brandSource.match(pattern)?.[1] ?? fallback;
 const brand = {
-  name: brandValue(/name: [\"']([^\"']+)[\"']/, 'Marine Collabs'),
-  shortName: brandValue(/shortName: [\"']([^\"']+)[\"']/, 'Marine Collabs'),
+  name: brandValue(/name: [\"']([^\"']+)[\"']/, 'Krew Media'),
+  shortName: brandValue(/shortName: [\"']([^\"']+)[\"']/, 'Krew Media'),
   descriptor: brandValue(/descriptor: [\"']([^\"']+)[\"']/, 'Agence d’influence maritime'),
-  email: brandValue(/email: [\"']([^\"']+)[\"']/, 'bonjour@regienautique.fr'),
+  email: brandValue(/email: [\"']([^\"']+)[\"']/, 'adrien.cazanave@gmail.com'),
   domain: brandValue(/domain: [\"']([^\"']+)[\"']/, 'regienautique.fr'),
 };
 const origin = `https://${brand.domain}`;
+const whatsappUrl = 'https://wa.me/33605518610?text=Bonjour%20Adrien%2C%20je%20souhaite%20%C3%A9changer%20au%20sujet%20d%E2%80%99une%20campagne%20nautique.';
+const emailUrl = `mailto:${brand.email}`;
 const baseHtml = await readFile(path.join(distDir, 'index.html'), 'utf8');
 const creatorsSource = await readFile(path.join(root, 'src/data/creators.ts'), 'utf8');
 
@@ -38,20 +40,20 @@ const creators = creatorBlocks.map((block) => ({
 })).filter((creator) => creator.slug && creator.displayName);
 
 const routes = [
-  { route: '/', title: 'Agence d’influence nautique', eyebrow: 'MARINE COLLABS', heading: 'Les voix que vos clients écoutent déjà.', description: 'Marine Collabs sélectionne et coordonne des créateurs maritimes pour des campagnes crédibles, humaines et mesurables.', image: '/assets/editorial/adrien-hero.webp', links: [['Découvrir les créateurs', '/creators'], ['Construire un brief', '/campaign-builder']] },
-  { route: '/creators', title: 'Créateurs maritimes', eyebrow: 'LE RÉSEAU', heading: 'Des créateurs qui vivent réellement le nautisme.', description: 'Découvrez un réseau sélectionné de marins, capitaines, plongeurs, athlètes et spécialistes du nautisme.', image: '/assets/editorial/can-hero.webp', links: [['Créer une campagne', '/campaign-builder'], ['Comparer une sélection', '/selection']] },
-  { route: '/solutions', title: 'Solutions de campagne', eyebrow: 'SOLUTIONS', heading: 'Commencez par l’objectif. Nous construisons le dispositif.', description: 'Notoriété, lancement, test produit, contenu, ambassade, destination et événement nautique.', image: '/assets/editorial/gallery/sunset-sailing.webp', links: [['Construire le brief', '/campaign-builder'], ['Parler à l’agence', '/contact?intent=rendez-vous']] },
-  { route: '/for-brands', title: 'Pour les marques', eyebrow: 'POUR LES MARQUES', heading: 'Faites parler de votre marque par ceux que le nautisme écoute déjà.', description: 'Construisez une campagne maritime avec une sélection de créateurs, un cadrage clair et une coordination unique.', image: '/assets/editorial/gallery/boat-work-duo.webp', links: [['Choisir un créneau', '/contact?intent=rendez-vous'], ['Explorer le réseau', '/creators']] },
-  { route: '/campaign-builder', title: 'Créer une campagne', eyebrow: 'BRIEF DE CAMPAGNE', heading: 'Transformez une idée en brief créateur exploitable.', description: 'Structurez vos marchés, formats, droits et créateurs présélectionnés dans un brouillon enregistré localement.', image: '/assets/editorial/gallery/yacht-deck.webp', robots: 'noindex, follow', links: [['Voir les créateurs', '/creators']] },
-  { route: '/selection', title: 'Sélection de créateurs', eyebrow: 'CASTING', heading: 'Comparez les profils avant de valider votre brief.', description: 'Comparez les créateurs présélectionnés avant de transformer le casting en brief de campagne.', image: '/assets/editorial/gallery/yacht-deck.webp', robots: 'noindex, follow', links: [['Explorer le réseau', '/creators'], ['Construire le brief', '/campaign-builder']] },
-  { route: '/methodology', title: 'Méthodologie et sources', eyebrow: 'TRANSPARENCE', heading: 'Chaque chiffre doit indiquer ce qu’il mesure et d’où il vient.', description: 'Comprenez l’origine, la période et le niveau de preuve des métriques utilisées par Marine Collabs.', image: '/assets/editorial/gallery/windy-sailing.webp', links: [['Voir le réseau', '/creators']] },
-  { route: '/case-studies', title: 'Cas clients', eyebrow: 'CAS CLIENTS', heading: 'Des résultats réels, documentés et autorisés.', description: 'Une structure rigoureuse pour présenter uniquement des résultats réels, autorisés et documentés.', image: '/assets/editorial/gallery/boat-work-duo.webp', robots: 'noindex, nofollow', links: [['Parler de votre campagne', '/contact']] },
-  { route: '/about', title: 'À propos', eyebrow: 'L’AGENCE', heading: 'Une agence construite entre culture maritime et économie des créateurs.', description: 'Une agence spécialisée à la rencontre de la culture maritime, de la création de contenu et des enjeux de marque.', image: '/assets/editorial/adrien-hero.webp', links: [['Parler à l’équipe', '/contact?intent=rendez-vous']] },
-  { route: '/join-the-network', title: 'Rejoindre le réseau', eyebrow: 'POUR LES CRÉATEURS', heading: 'Rejoignez un réseau qui comprend le travail derrière le contenu maritime.', description: 'Candidatez pour rejoindre un réseau sélectionné de créateurs maritimes.', image: '/assets/editorial/gallery/windy-sailing.webp', links: [['Présenter votre profil', '/contact?intent=createur']] },
-  { route: '/contact', title: 'Contact', eyebrow: 'CONTACT', heading: 'Commencez par la bonne conversation.', description: 'Parlez à Marine Collabs de votre marque, de votre campagne ou de votre candidature.', image: '/assets/editorial/gallery/marina-reflection.webp', robots: 'noindex, follow', links: [['Voir les créateurs', '/creators']] },
-  { route: '/privacy', title: 'Politique de confidentialité', heading: 'Politique de confidentialité', description: 'Cadre de confidentialité de Marine Collabs.', robots: 'noindex, follow' },
-  { route: '/terms', title: 'Conditions d’utilisation', heading: 'Conditions d’utilisation', description: 'Conditions d’utilisation de la plateforme Marine Collabs.', robots: 'noindex, follow' },
-  { route: '/legal', title: 'Mentions légales', heading: 'Mentions légales', description: 'Informations légales de Marine Collabs.', robots: 'noindex, follow' },
+  { route: '/', title: 'Agence d’influence nautique', eyebrow: 'KREW MEDIA', heading: 'Les voix que vos clients écoutent déjà.', description: 'Krew Media sélectionne et coordonne des créateurs maritimes pour des campagnes crédibles, humaines et mesurables.', image: '/assets/brand/hero-poster.jpg', links: [['Découvrir les créateurs', '/creators'], ['Construire un brief', '/campaign-builder']] },
+  { route: '/creators', title: 'Créateurs maritimes', eyebrow: 'LE RÉSEAU', heading: 'Des créateurs qui vivent réellement le nautisme.', description: 'Découvrez un réseau sélectionné de marins, capitaines, plongeurs, athlètes et spécialistes du nautisme.', image: '/assets/brand/hero-poster.jpg', links: [['Créer une campagne', '/campaign-builder'], ['Comparer une sélection', '/selection']] },
+  { route: '/solutions', title: 'Solutions de campagne', eyebrow: 'SOLUTIONS', heading: 'Commencez par l’objectif. Nous construisons le dispositif.', description: 'Notoriété, lancement, test produit, contenu, ambassade, destination et événement nautique.', image: '/assets/brand/hero-poster.jpg', links: [['Construire le brief', '/campaign-builder'], ['Parler à Adrien sur WhatsApp', whatsappUrl]] },
+  { route: '/for-brands', title: 'Pour les marques', eyebrow: 'POUR LES MARQUES', heading: 'Faites parler de votre marque par ceux que le nautisme écoute déjà.', description: 'Construisez une campagne maritime avec une sélection de créateurs, un cadrage clair et une coordination unique.', image: '/assets/brand/hero-poster.jpg', links: [['Parler à Adrien sur WhatsApp', whatsappUrl], ['Explorer le réseau', '/creators']] },
+  { route: '/campaign-builder', title: 'Créer une campagne', eyebrow: 'BRIEF DE CAMPAGNE', heading: 'Transformez une idée en brief créateur exploitable.', description: 'Structurez vos marchés, formats, droits et créateurs présélectionnés dans un brouillon enregistré localement.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow', links: [['Voir les créateurs', '/creators']] },
+  { route: '/selection', title: 'Sélection de créateurs', eyebrow: 'CASTING', heading: 'Comparez les profils avant de valider votre brief.', description: 'Comparez les créateurs présélectionnés avant de transformer le casting en brief de campagne.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow', links: [['Explorer le réseau', '/creators'], ['Construire le brief', '/campaign-builder']] },
+  { route: '/methodology', title: 'Méthodologie et sources', eyebrow: 'TRANSPARENCE', heading: 'Chaque chiffre doit indiquer ce qu’il mesure et d’où il vient.', description: 'Comprenez l’origine, la période et le niveau de preuve des métriques utilisées par Krew Media.', image: '/assets/brand/hero-poster.jpg', links: [['Voir le réseau', '/creators']] },
+  { route: '/case-studies', title: 'Cas clients', eyebrow: 'CAS CLIENTS', heading: 'Des résultats réels, documentés et autorisés.', description: 'Une structure rigoureuse pour présenter uniquement des résultats réels, autorisés et documentés.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, nofollow', links: [['Parler de votre campagne sur WhatsApp', whatsappUrl]] },
+  { route: '/about', title: 'À propos', eyebrow: 'L’AGENCE', heading: 'Une agence construite entre culture maritime et économie des créateurs.', description: 'Une agence spécialisée à la rencontre de la culture maritime, de la création de contenu et des enjeux de marque.', image: '/assets/brand/adrien-cazanave.jpg', links: [['Parler à Adrien sur WhatsApp', whatsappUrl]] },
+  { route: '/join-the-network', title: 'Rejoindre le réseau', eyebrow: 'POUR LES CRÉATEURS', heading: 'Rejoignez un réseau qui comprend le travail derrière le contenu maritime.', description: 'Candidatez pour rejoindre un réseau sélectionné de créateurs maritimes.', image: '/assets/brand/hero-poster.jpg', links: [['Présenter votre profil par email', emailUrl]] },
+  { route: '/contact', title: 'Contact', eyebrow: 'CONTACT', heading: 'Commencez par la bonne conversation.', description: 'Parlez à Krew Media de votre marque, de votre campagne ou de votre candidature.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow', links: [['Voir les créateurs', '/creators']] },
+  { route: '/privacy', title: 'Politique de confidentialité', heading: 'Politique de confidentialité', description: 'Cadre de confidentialité de Krew Media.', robots: 'noindex, follow' },
+  { route: '/terms', title: 'Conditions d’utilisation', heading: 'Conditions d’utilisation', description: 'Conditions d’utilisation de la plateforme Krew Media.', robots: 'noindex, follow' },
+  { route: '/legal', title: 'Mentions légales', heading: 'Mentions légales', description: 'Informations légales de Krew Media.', robots: 'noindex, follow' },
   ...creators.map((creator) => ({
     route: `/creators/${creator.slug}`,
     title: `${creator.displayName} · Créateur maritime`,
@@ -76,12 +78,12 @@ function buildStaticShell(meta) {
   const facts = meta.creator ? `<ul class="static-route-shell__facts"><li>${escapeHtml(meta.creator.handle)}</li><li>${new Intl.NumberFormat('fr-FR').format(meta.creator.followers)} abonnés visibles</li><li>${new Intl.NumberFormat('fr-FR').format(meta.creator.posts)} publications visibles</li></ul>` : '';
   return `<div id="root"><div class="static-route-shell" data-static-shell>
     <header class="static-route-shell__nav"><a class="static-route-shell__brand" href="/">${escapeHtml(brand.shortName)}</a><nav aria-label="Navigation statique"><a href="/creators">Créateurs</a><a href="/solutions">Solutions</a><a href="/for-brands">Pour les marques</a><a href="/about">À propos</a></nav></header>
-    <main class="static-route-shell__main"><p class="static-route-shell__eyebrow">${escapeHtml(meta.eyebrow ?? 'MARINE COLLABS')}</p><h1>${escapeHtml(meta.heading ?? meta.title)}</h1><p class="static-route-shell__description">${escapeHtml(meta.description)}</p>${facts}<div class="static-route-shell__actions">${links}</div><p class="static-route-shell__note">L’interface interactive se charge automatiquement. Les données détaillées et les outils de sélection nécessitent JavaScript.</p></main>
+    <main class="static-route-shell__main"><p class="static-route-shell__eyebrow">${escapeHtml(meta.eyebrow ?? 'KREW MEDIA')}</p><h1>${escapeHtml(meta.heading ?? meta.title)}</h1><p class="static-route-shell__description">${escapeHtml(meta.description)}</p>${facts}<div class="static-route-shell__actions">${links}</div><p class="static-route-shell__note">L’interface interactive se charge automatiquement. Les données détaillées et les outils de sélection nécessitent JavaScript.</p></main>
   </div></div>`;
 }
 
 function setMeta(html, meta) {
-  const { route, title, description, image = '/assets/editorial/adrien-hero.webp', robots = 'index, follow', type = 'website', creator } = meta;
+  const { route, title, description, image = '/assets/brand/hero-poster.jpg', robots = 'index, follow', type = 'website', creator } = meta;
   const fullTitle = `${title} | ${brand.name}`;
   const canonical = `${origin}${route === '/' ? '/' : route}`;
   const absoluteImage = `${origin}${image}`;

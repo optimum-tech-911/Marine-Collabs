@@ -7,7 +7,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
   const { locale } = useLocale();
   return (
     <Link className={`brand-lockup${inverse ? ' brand-lockup--inverse' : ''}`} to={path('home')} aria-label={`${brand.name} — ${locale === 'fr' ? 'accueil' : 'home'}`}>
-      <img className="brand-mark brand-mark--image" src="/icon-192.png" alt="" width="48" height="48" />
+      <img className="brand-mark brand-mark--image" src="/icon-192.png" alt="" width="48" height="48" decoding="async" />
       <span>
         <strong>{brand.shortName}</strong>
         <small>{locale === 'fr' ? brand.descriptor : brand.descriptorEn}</small>

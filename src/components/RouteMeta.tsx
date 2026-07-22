@@ -15,30 +15,30 @@ type Meta = {
 const staticMeta: Record<string, Record<Locale, Meta>> = {
   home: { fr: {
     title: "Agence d’influence nautique",
-    description: "Marine Collabs sélectionne et coordonne des créateurs maritimes pour des campagnes crédibles, humaines et mesurables.",
-    image: '/assets/editorial/adrien-hero.webp',
-  }, en: { title: 'Maritime influence agency', description: 'Marine Collabs selects and coordinates maritime creators for credible, human and measurable campaigns.', image: '/assets/editorial/adrien-hero.webp' } },
+    description: "Krew Media sélectionne et coordonne des créateurs maritimes pour des campagnes crédibles, humaines et mesurables.",
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'Maritime influence agency', description: 'Krew Media selects and coordinates maritime creators for credible, human and measurable campaigns.', image: '/assets/brand/hero-poster.jpg' } },
   creators: { fr: {
     title: 'Créateurs maritimes',
     description: 'Découvrez un réseau sélectionné de marins, capitaines, plongeurs, athlètes et spécialistes du nautisme.',
-    image: '/assets/editorial/can-hero.webp',
-  }, en: { title: 'Maritime creators', description: 'Explore a selected network of sailors, captains, divers, athletes and marine specialists.', image: '/assets/editorial/can-hero.webp' } },
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'Maritime creators', description: 'Explore a selected network of sailors, captains, divers, athletes and marine specialists.', image: '/assets/brand/hero-poster.jpg' } },
   solutions: { fr: {
     title: 'Solutions de campagne',
     description: 'Notoriété, lancement, test produit, contenu, ambassade, destination et événement nautique.',
-    image: '/assets/editorial/gallery/sunset-sailing.webp',
-  }, en: { title: 'Campaign solutions', description: 'Awareness, launch, product trial, content, ambassador, destination and maritime events.', image: '/assets/editorial/gallery/sunset-sailing.webp' } },
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'Campaign solutions', description: 'Awareness, launch, product trial, content, ambassador, destination and maritime events.', image: '/assets/brand/hero-poster.jpg' } },
   brands: { fr: {
     title: 'Pour les marques',
     description: 'Construisez une campagne maritime avec une sélection de créateurs, un cadrage clair et une coordination unique.',
-    image: '/assets/editorial/gallery/boat-work-duo.webp',
-  }, en: { title: 'For brands', description: 'Build a maritime campaign with a curated creator selection, clear scope and one accountable partner.', image: '/assets/editorial/gallery/boat-work-duo.webp' } },
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'For brands', description: 'Build a maritime campaign with a curated creator selection, clear scope and one accountable partner.', image: '/assets/brand/hero-poster.jpg' } },
   campaign: { fr: {
     title: 'Créer une campagne',
     description: 'Transformez votre objectif en brief structuré avec marchés, formats, droits et créateurs sélectionnés.',
-    image: '/assets/editorial/gallery/yacht-deck.webp',
+    image: '/assets/brand/hero-poster.jpg',
     robots: 'noindex, follow',
-  }, en: { title: 'Build a campaign', description: 'Turn your objective into a structured brief with markets, formats, rights and selected creators.', image: '/assets/editorial/gallery/yacht-deck.webp', robots: 'noindex, follow' } },
+  }, en: { title: 'Build a campaign', description: 'Turn your objective into a structured brief with markets, formats, rights and selected creators.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
   cases: { fr: {
     title: 'Cas clients',
     description: 'Une structure rigoureuse pour présenter uniquement des résultats réels, autorisés et documentés.',
@@ -47,33 +47,33 @@ const staticMeta: Record<string, Record<Locale, Meta>> = {
   about: { fr: {
     title: 'À propos',
     description: 'Une agence spécialisée à la rencontre de la culture maritime, de la création de contenu et des enjeux de marque.',
-    image: '/assets/editorial/adrien-hero.webp',
-  }, en: { title: 'About Marine Collabs', description: 'An agency at the intersection of maritime culture, creator work and brand challenges.', image: '/assets/editorial/adrien-hero.webp' } },
+    image: '/assets/brand/adrien-cazanave.jpg',
+  }, en: { title: 'About Krew Media', description: 'An agency at the intersection of maritime culture, creator work and brand challenges.', image: '/assets/brand/adrien-cazanave.jpg' } },
   join: { fr: {
     title: 'Rejoindre le réseau',
     description: 'Candidatez pour rejoindre un réseau sélectionné de créateurs maritimes.',
-    image: '/assets/editorial/gallery/windy-sailing.webp',
-  }, en: { title: 'Join the network', description: 'Apply to join a selected network of maritime creators.', image: '/assets/editorial/gallery/windy-sailing.webp' } },
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'Join the network', description: 'Apply to join a selected network of maritime creators.', image: '/assets/brand/hero-poster.jpg' } },
   contact: { fr: {
     title: 'Contact',
-    description: 'Parlez à Marine Collabs de votre marque, de votre campagne ou de votre candidature.',
-    image: '/assets/editorial/gallery/marina-reflection.webp',
+    description: 'Parlez à Krew Media de votre marque, de votre campagne ou de votre candidature.',
+    image: '/assets/brand/hero-poster.jpg',
     robots: 'noindex, follow',
-  }, en: { title: 'Contact', description: 'Talk to Marine Collabs about your brand, campaign or creator application.', image: '/assets/editorial/gallery/marina-reflection.webp', robots: 'noindex, follow' } },
+  }, en: { title: 'Contact', description: 'Talk to Krew Media about your brand, campaign or creator application.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
   selection: { fr: {
     title: 'Sélection de créateurs',
     description: 'Comparez les créateurs présélectionnés avant de transformer le casting en brief de campagne.',
-    image: '/assets/editorial/gallery/yacht-deck.webp',
+    image: '/assets/brand/hero-poster.jpg',
     robots: 'noindex, follow',
-  }, en: { title: 'Creator shortlist', description: 'Compare selected creators before turning the cast into a campaign brief.', image: '/assets/editorial/gallery/yacht-deck.webp', robots: 'noindex, follow' } },
+  }, en: { title: 'Creator shortlist', description: 'Compare selected creators before turning the cast into a campaign brief.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
   methodology: { fr: {
     title: 'Méthodologie et sources',
-    description: 'Comprenez l’origine, la période et le niveau de preuve des métriques utilisées par Marine Collabs.',
-    image: '/assets/editorial/gallery/windy-sailing.webp',
-  }, en: { title: 'Methodology & sources', description: 'Understand the source, period and level of evidence behind Marine Collabs metrics.', image: '/assets/editorial/gallery/windy-sailing.webp' } },
-  privacy: { fr: { title: 'Politique de confidentialité', description: 'Cadre de confidentialité de Marine Collabs.', robots: 'noindex, follow' }, en: { title: 'Privacy policy', description: 'Marine Collabs privacy framework.', robots: 'noindex, follow' } },
-  terms: { fr: { title: "Conditions d’utilisation", description: "Conditions d’utilisation de la plateforme Marine Collabs.", robots: 'noindex, follow' }, en: { title: 'Terms of use', description: 'Marine Collabs platform terms of use.', robots: 'noindex, follow' } },
-  legal: { fr: { title: 'Mentions légales', description: 'Informations légales de Marine Collabs.', robots: 'noindex, follow' }, en: { title: 'Legal notice', description: 'Marine Collabs legal information.', robots: 'noindex, follow' } },
+    description: 'Comprenez l’origine, la période et le niveau de preuve des métriques utilisées par Krew Media.',
+    image: '/assets/brand/hero-poster.jpg',
+  }, en: { title: 'Methodology & sources', description: 'Understand the source, period and level of evidence behind Krew Media metrics.', image: '/assets/brand/hero-poster.jpg' } },
+  privacy: { fr: { title: 'Politique de confidentialité', description: 'Cadre de confidentialité de Krew Media.', robots: 'noindex, follow' }, en: { title: 'Privacy policy', description: 'Krew Media privacy framework.', robots: 'noindex, follow' } },
+  terms: { fr: { title: "Conditions d’utilisation", description: "Conditions d’utilisation de la plateforme Krew Media.", robots: 'noindex, follow' }, en: { title: 'Terms of use', description: 'Krew Media platform terms of use.', robots: 'noindex, follow' } },
+  legal: { fr: { title: 'Mentions légales', description: 'Informations légales de Krew Media.', robots: 'noindex, follow' }, en: { title: 'Legal notice', description: 'Krew Media legal information.', robots: 'noindex, follow' } },
 };
 
 function ensureMeta(selector: string, attributes: Record<string, string>) {
@@ -110,7 +110,7 @@ export function RouteMeta() {
       if (creator) {
         meta = {
           title: `${creator.displayName} · ${creator.handle}`,
-          description: locale === 'fr' ? `${creator.headline}. ${creator.shortBio}` : `${creator.displayName} is part of Marine Collabs' selected maritime creator network. Request a commercial profile and media kit.`,
+          description: locale === 'fr' ? `${creator.headline}. ${creator.shortBio}` : `${creator.displayName} is part of Krew Media's selected maritime creator network. Request a commercial profile and media kit.`,
           image: creator.image,
           type: 'profile',
         };
@@ -121,7 +121,7 @@ export function RouteMeta() {
           mainEntity: {
             '@type': creator.schemaType,
             name: creator.displayName,
-            description: locale === 'fr' ? creator.headline : `${creator.displayName}, maritime creator represented by Marine Collabs.`,
+            description: locale === 'fr' ? creator.headline : `${creator.displayName}, maritime creator represented by Krew Media.`,
             image: `${origin}${creator.image}`,
             sameAs: creator.platforms[0]?.url ? [creator.platforms[0].url] : undefined,
           },
@@ -131,7 +131,7 @@ export function RouteMeta() {
 
     const resolved = meta ?? { title: brand.shortName, description: brand.descriptor };
     const canonicalUrl = `${origin}${location.pathname === '/' ? '/' : location.pathname}`;
-    const imageUrl = resolved.image ? `${origin}${resolved.image}` : `${origin}/assets/editorial/adrien-hero.webp`;
+    const imageUrl = resolved.image ? `${origin}${resolved.image}` : `${origin}/assets/brand/hero-poster.jpg`;
     const fullTitle = `${resolved.title} | ${brand.name}`;
 
     document.documentElement.lang = locale;

@@ -10,6 +10,7 @@ import { ShortlistLiveRegion } from './ShortlistLiveRegion';
 import { WorkingPrototypeBanner } from './WorkingPrototypeBanner';
 import { AnalyticsTracker } from './AnalyticsTracker';
 import { DocumentLocalization } from './DocumentLocalization';
+import { ScrollMotion } from './ScrollMotion';
 
 export function Layout() {
   const location = useLocation();
@@ -22,6 +23,7 @@ export function Layout() {
     <>
       <RouteMeta />
       <DocumentLocalization />
+      <ScrollMotion />
       <AnalyticsTracker />
       <RouteAnnouncer />
       <ShortlistLiveRegion />

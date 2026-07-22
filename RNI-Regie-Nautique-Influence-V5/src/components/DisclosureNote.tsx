@@ -1,2 +1,0 @@
-import { ShieldCheck } from 'lucide-react';
-export function DisclosureNote(){return <div className="disclosure-note"><ShieldCheck size={20}/><p>Les abonnés et publications proviennent des captures Instagram fournies en juillet 2026. Les fourchettes marquées « estimation » servent uniquement à la préparation des campagnes et doivent être remplacées par des Creator Insights standardisés avant toute utilisation commerciale externe.</p></div>;}

@@ -9,7 +9,7 @@ if (!existsSync(new URL('../package-lock.json', import.meta.url))) problems.push
 if (!existsSync(new URL('../public/_headers', import.meta.url))) problems.push('Configuration Cloudflare _headers absente.');
 if (!existsSync(new URL('../public/_redirects', import.meta.url))) problems.push('Configuration Cloudflare _redirects absente.');
 
-console.log(`RNI ${packageJson.version} · Node ${process.version} · npm ${process.env.npm_config_user_agent?.split(' ')[0] ?? 'non détecté'}`);
+console.log(`Krew Media ${packageJson.version} · Node ${process.version} · npm ${process.env.npm_config_user_agent?.split(' ')[0] ?? 'non détecté'}`);
 if (problems.length) {
   problems.forEach((problem) => console.warn(`- ${problem}`));
   process.exitCode = 1;

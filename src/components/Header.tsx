@@ -1,13 +1,13 @@
 import { ArrowUpRight, Menu, Search, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useShortlist } from '../context/ShortlistContext';
 import { GlobalSearch } from './GlobalSearch';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedPath, useLocale } from '../i18n/locale';
 import type { RouteKey } from '../i18n/routes';
+import { ContactLink } from './ContactLink';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,10 +18,10 @@ export function Header() {
   const { locale } = useLocale();
   const copy: { navigation: [RouteKey, string][]; search: string; shortlist: string; campaign: string; open: string; close: string } = locale === 'fr' ? {
     navigation: [['creators', 'Créateurs'], ['solutions', 'Solutions'], ['brands', 'Pour les marques'], ['about', 'À propos']],
-    search: 'Rechercher un créateur', shortlist: 'Sélection', campaign: 'Créer une campagne', open: 'Ouvrir la navigation', close: 'Fermer la navigation',
+    search: 'Rechercher un créateur', shortlist: 'Sélection', campaign: 'Parler à Adrien', open: 'Ouvrir la navigation', close: 'Fermer la navigation',
   } : {
     navigation: [['creators', 'Creators'], ['solutions', 'Solutions'], ['brands', 'For brands'], ['about', 'About']],
-    search: 'Search creators', shortlist: 'Shortlist', campaign: 'Build a campaign', open: 'Open navigation', close: 'Close navigation',
+    search: 'Search creators', shortlist: 'Shortlist', campaign: 'Contact Adrien', open: 'Open navigation', close: 'Close navigation',
   };
   const navigation = copy.navigation.map(([key, label]) => ({ to: path(key), label }));
   const closeSearch = useCallback(() => setSearchOpen(false), []);
@@ -55,19 +55,17 @@ export function Header() {
             <LanguageSwitcher />
             <button className="header-search" type="button" onClick={() => setSearchOpen(true)} aria-label={copy.search} aria-haspopup="dialog"><Search size={17} /><span>⌘K</span></button>
             <button className="shortlist-trigger" type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-controls="shortlist-dialog" aria-label={`${copy.shortlist}, ${shortlist.length}`}>{copy.shortlist} <span>{shortlist.length}</span></button>
-            <Link className="button button--small button--dark desktop-cta" to={path('campaign')}>{copy.campaign} <ArrowUpRight size={15}/></Link>
+            <ContactLink className="button button--small button--dark desktop-cta" placement="header">{copy.campaign} <ArrowUpRight size={15}/></ContactLink>
             <button className="mobile-menu-button" type="button" onClick={() => setMobileOpen((value) => !value)} aria-expanded={mobileOpen} aria-label={mobileOpen ? copy.close : copy.open}>{mobileOpen ? <X size={22}/> : <Menu size={22}/>}</button>
           </div>
         </div>
-        <AnimatePresence>
-          {mobileOpen ? <motion.div className="mobile-nav" initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}} transition={{duration:.22}}>
+          {mobileOpen ? <div className="mobile-nav">
             <nav className="container" aria-label="Navigation mobile">
               <button className="mobile-search-link" type="button" onClick={() => { setMobileOpen(false); setSearchOpen(true); }}><Search size={18}/> {copy.search}</button>
               {navigation.map((item)=><NavLink key={item.to} to={item.to}>{item.label}</NavLink>)}
-              <Link className="button button--primary" to={path('campaign')}>{copy.campaign} <ArrowUpRight size={16}/></Link>
+              <ContactLink className="button button--primary" placement="header_mobile">{copy.campaign} <ArrowUpRight size={16}/></ContactLink>
             </nav>
-          </motion.div> : null}
-        </AnimatePresence>
+          </div> : null}
       </header>
       <GlobalSearch open={searchOpen} onClose={closeSearch}/>
     </>

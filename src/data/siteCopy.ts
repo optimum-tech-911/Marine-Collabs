@@ -8,7 +8,7 @@ export const siteCopy = {
   booking: {
     eyebrow: 'Parlons de votre marque',
     title: 'Un échange, pas un pitch commercial.',
-    body: 'Trente minutes avec Adrien pour comprendre votre marque et vous dire concrètement ce que l’influence nautique peut vous apporter. Un vrai marin au bout du fil. Pas de bot, pas de script.',
+    body: 'Écrivez ou appelez Adrien pour lui présenter votre marque et comprendre concrètement ce que l’influence nautique peut vous apporter. Un vrai marin au bout du fil. Pas de bot, pas de script.',
     reassurance: 'Sans engagement. Si ce n’est pas pertinent pour vous, on vous le dira.',
   },
   metricDisclaimer: 'Les métriques affichées sont visibles publiquement, fournies par les créateurs ou estimées à titre indicatif. Les estimations ne constituent pas une garantie de performance.',

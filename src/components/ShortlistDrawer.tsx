@@ -1,5 +1,4 @@
 import { ArrowRight, Columns3, Trash2, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useShortlist } from '../context/ShortlistContext';
@@ -14,19 +13,16 @@ export function ShortlistDrawer() {
   useDialogA11y(isDrawerOpen, drawerRef, close, closeRef);
 
   return (
-    <AnimatePresence>
+    <>
       {isDrawerOpen ? (
         <>
-          <motion.button
+          <button
             type="button"
             className="drawer-backdrop"
             aria-label="Fermer la sélection"
             onClick={close}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           />
-          <motion.aside
+          <aside
             ref={drawerRef}
             tabIndex={-1}
             id="shortlist-dialog"
@@ -34,10 +30,6 @@ export function ShortlistDrawer() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="shortlist-title"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 280, damping: 30 }}
           >
             <div className="drawer-header">
               <div>
@@ -85,9 +77,9 @@ export function ShortlistDrawer() {
               </Link>
               <p>Les coordonnées privées des créateurs ne sont pas exposées. L’agence reste votre point de contact.</p>
             </div>
-          </motion.aside>
+          </aside>
         </>
       ) : null}
-    </AnimatePresence>
+    </>
   );
 }

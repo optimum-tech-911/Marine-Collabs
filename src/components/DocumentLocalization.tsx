@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useLocale } from '../i18n/locale';
 import { toEnglish } from '../i18n/english-copy';
 
-const translatedAttributes = ['aria-label', 'placeholder', 'title'] as const;
+const translatedAttributes = ['aria-label', 'placeholder', 'title', 'alt'] as const;
 
 function translateTree(root: ParentNode) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);

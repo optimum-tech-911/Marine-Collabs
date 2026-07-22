@@ -149,7 +149,7 @@ export function SelectionPage() {
 
           <div className="selection-v5-guidance">
             <SectionReveal><Compass size={22}/><div><h3>Complémentarité</h3><p>Associez une forte portée à un profil technique ou régional pour donner à chaque créateur un rôle distinct.</p></div></SectionReveal>
-            <SectionReveal delay={.04}><ShieldCheck size={22}/><div><h3>Validation agence</h3><p>Marine Collabs confirme la pertinence, la disponibilité, les droits, le calendrier et les conditions avant toute proposition.</p></div></SectionReveal>
+            <SectionReveal delay={.04}><ShieldCheck size={22}/><div><h3>Validation agence</h3><p>Krew Media confirme la pertinence, la disponibilité, les droits, le calendrier et les conditions avant toute proposition.</p></div></SectionReveal>
             <SectionReveal delay={.08}><CheckCircle2 size={22}/><div><h3>Prochaine étape</h3><p>Transformez cette sélection en brief exploitable, puis transmettez-le à l’agence sans perdre votre contexte.</p></div></SectionReveal>
           </div>
 

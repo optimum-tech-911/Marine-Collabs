@@ -8,6 +8,8 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { formatCompact } from '../lib/format';
 import { trackEvent } from '../lib/analytics';
 import type { CampaignBrief } from '../types';
+import { useLocale } from '../i18n/locale';
+import { toEnglish } from '../i18n/english-copy';
 
 const defaultBrief: CampaignBrief = {
   objective: '', market: '', audience: '', category: '', platforms: [], formats: [], budget: '', timing: '', usageRights: '', exclusivity: '', notes: '', contactName: '', company: '', email: '', selectedCreatorSlugs: [],
@@ -18,6 +20,8 @@ const platforms = ['Instagram','YouTube','TikTok','Canaux de la marque'];
 const formats = ['Vidéo courte','Vidéo longue','Photographie','Stories','Couverture événementielle','Test technique','Assets UGC'];
 
 export function CampaignBuilderPage() {
+  const { locale } = useLocale();
+  const localize = (value: string) => locale === 'en' ? toEnglish(value) : value;
   const [params] = useSearchParams();
   const [step, setStep] = useState(1);
   const [brief, setBrief] = useLocalStorage<CampaignBrief>('rni-campaign-brief-v5', defaultBrief);
@@ -59,27 +63,27 @@ export function CampaignBuilderPage() {
   }, [brief, step]);
 
   const summary = useMemo(() => {
-    const creatorNames = selectedCreators.length ? selectedCreators.map((creator) => creator?.displayName).filter(Boolean).join(', ') : 'Recommandation de l’agence demandée';
+    const creatorNames = selectedCreators.length ? selectedCreators.map((creator) => creator?.displayName).filter(Boolean).join(', ') : localize('Recommandation de l’agence demandée');
     return [
-      'MARINE COLLABS — BRIEF DE CAMPAGNE','',
-      `Objectif : ${brief.objective || 'Non renseigné'}`,
-      `Marché : ${brief.market || 'Non renseigné'}`,
-      `Audience cible : ${brief.audience || 'Non renseignée'}`,
-      `Catégorie nautique : ${brief.category || 'Non renseignée'}`,
-      `Plateformes : ${brief.platforms.join(', ') || 'Non renseignées'}`,
-      `Formats : ${brief.formats.join(', ') || 'Non renseignés'}`,
-      `Budget : ${brief.budget || 'Non renseigné'}`,
-      `Calendrier : ${brief.timing || 'Non renseigné'}`,
-      `Droits d’utilisation : ${brief.usageRights || 'À définir'}`,
-      `Exclusivité : ${brief.exclusivity || 'À définir'}`,
-      `Créateurs présélectionnés : ${creatorNames}`,'',
-      `Entreprise : ${brief.company || 'Non renseignée'}`,
-      `Contact : ${brief.contactName || 'Non renseigné'}`,
-      `Email : ${brief.email || 'Non renseigné'}`,'',
-      `Contexte supplémentaire : ${brief.notes || 'Aucun'}`,'',
-      'Brief généré par la version statique de la plateforme. Les métriques, disponibilités et conditions doivent être confirmées par Marine Collabs.',
+      localize('KREW MEDIA — BRIEF DE CAMPAGNE'),'',
+      `${localize('Objectif')} : ${brief.objective ? localize(brief.objective) : localize('Non renseigné')}`,
+      `${localize('Marché')} : ${brief.market || localize('Non renseigné')}`,
+      `${localize('Audience cible')} : ${brief.audience || localize('Non renseignée')}`,
+      `${localize('Catégorie nautique')} : ${brief.category ? localize(brief.category) : localize('Non renseignée')}`,
+      `${localize('Plateformes')} : ${brief.platforms.map(localize).join(', ') || localize('Non renseignées')}`,
+      `${localize('Formats')} : ${brief.formats.map(localize).join(', ') || localize('Non renseignés')}`,
+      `${localize('Budget')} : ${brief.budget ? localize(brief.budget) : localize('Non renseigné')}`,
+      `${localize('Calendrier')} : ${brief.timing || localize('Non renseigné')}`,
+      `${localize('Droits d’utilisation')} : ${brief.usageRights ? localize(brief.usageRights) : localize('À définir')}`,
+      `${localize('Exclusivité')} : ${brief.exclusivity ? localize(brief.exclusivity) : localize('À définir')}`,
+      `${localize('Créateurs présélectionnés')} : ${creatorNames}`,'',
+      `${localize('Entreprise')} : ${brief.company || localize('Non renseignée')}`,
+      `${localize('Contact')} : ${brief.contactName || localize('Non renseigné')}`,
+      `Email : ${brief.email || localize('Non renseigné')}`,'',
+      `${localize('Contexte supplémentaire')} : ${brief.notes || localize('Aucun')}`,'',
+      localize('Brief généré par la version statique de la plateforme. Les métriques, disponibilités et conditions doivent être confirmées par Krew Media.'),
     ].join('\n');
-  }, [brief, selectedCreators]);
+  }, [brief, locale, selectedCreators]);
 
   const copySummary = async () => {
     try { await navigator.clipboard.writeText(summary); setCopyState('copied'); trackEvent('campaign_brief_copy', { selected_creators: selectedCreators.length }); window.setTimeout(() => setCopyState('idle'), 2000); }

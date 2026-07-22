@@ -11,6 +11,12 @@ import { formatCompact } from '../lib/format';
 import type { CreatorCategory } from '../types';
 
 const categories = Array.from(new Set(creators.flatMap((creator) => creator.categories))) as CreatorCategory[];
+const heroScenes = [
+  '/assets/brand/fieldwork/network-at-marina.jpg',
+  '/assets/brand/fieldwork/creator-filming-onboard.jpg',
+  '/assets/brand/fieldwork/navigation-equipment.jpg',
+  '/assets/brand/fieldwork/campaign-conversation.jpg',
+];
 type SortOption = 'relevance' | 'reach-desc' | 'reach-asc' | 'verified' | 'name';
 type AudienceOption = 'all' | 'under-10' | '10-50' | '50-100' | '100-plus';
 
@@ -80,7 +86,7 @@ export function CreatorsPage() {
             <div className="creators-v4-hero__chips"><span><Users size={16}/>{creators.length} profils</span><span><Sparkles size={16}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span></div>
           </div>
           <div className="creators-v4-hero__collage" aria-hidden="true">
-            {creators.slice(0, 4).map((creator, index) => <img key={creator.slug} src={creator.image} alt="" className={`creators-v4-hero__image creators-v4-hero__image--${index + 1}`}/>) }
+            {heroScenes.map((scene, index) => <img key={scene} src={scene} alt="" className={`creators-v4-hero__image creators-v4-hero__image--${index + 1}`}/>) }
           </div>
         </div>
       </section>

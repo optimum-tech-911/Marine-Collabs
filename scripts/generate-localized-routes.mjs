@@ -17,20 +17,20 @@ const slugs = [...creatorSource.matchAll(/(?:^|\n)    slug: '([^']+)'/g)].map((m
 for (const slug of slugs) sourceRoutes.push([`creators/${slug}`, `/createurs/${slug}`, `/creators/${slug}`]);
 
 const englishCopy = {
-  '/': ['Maritime influence agency', 'The voices your customers already listen to.', 'Marine Collabs selects and coordinates maritime creators for credible, human and measurable campaigns.'],
+  '/': ['Maritime influence agency', 'The voices your customers already listen to.', 'Krew Media selects and coordinates maritime creators for credible, human and measurable campaigns.'],
   '/creators': ['Maritime creators', 'Creators who genuinely live the maritime world.', 'Explore a selected network of sailors, captains, divers, athletes and marine specialists.'],
   '/solutions': ['Campaign solutions', 'Start with the objective. We build the activation.', 'Awareness, launches, product trials, content, ambassadors, destinations and maritime events.'],
   '/for-brands': ['For brands', 'Put your brand in the conversations that matter.', 'A curated cast, clear scope and one accountable agency partner.'],
   '/build-a-campaign': ['Build a campaign', 'Turn an idea into a useful creator brief.', 'Structure your market, formats, rights and selected creators.'],
   '/case-studies': ['Case studies', 'Real, documented and authorised results.', 'A rigorous framework for presenting campaign evidence.'],
-  '/about': ['About Marine Collabs', 'Built between maritime culture and creator work.', 'A maritime influence agency led by people who know the industry from within.'],
+  '/about': ['About Krew Media', 'Built between maritime culture and creator work.', 'A maritime influence agency led by people who know the industry from within.'],
   '/join-the-network': ['Join the network', 'Join a network that understands the work behind maritime content.', 'Apply to work with a selective maritime creator agency.'],
-  '/contact': ['Contact', 'Start with the right conversation.', 'Talk to Marine Collabs about your brand, campaign or creator application.'],
+  '/contact': ['Contact', 'Start with the right conversation.', 'Talk to Krew Media about your brand, campaign or creator application.'],
   '/selection': ['Creator shortlist', 'Compare your cast before building the brief.', 'Review the selected creator roles and territories.'],
-  '/methodology': ['Methodology & sources', 'Every number should say what it measures and where it came from.', 'Understand the source, period and evidence level behind Marine Collabs metrics.'],
-  '/privacy': ['Privacy policy', 'Privacy policy', 'Marine Collabs privacy framework.'],
-  '/terms': ['Terms of use', 'Terms of use', 'Marine Collabs platform terms of use.'],
-  '/legal-notice': ['Legal notice', 'Legal notice', 'Marine Collabs legal information.'],
+  '/methodology': ['Methodology & sources', 'Every number should say what it measures and where it came from.', 'Understand the source, period and evidence level behind Krew Media metrics.'],
+  '/privacy': ['Privacy policy', 'Privacy policy', 'Krew Media privacy framework.'],
+  '/terms': ['Terms of use', 'Terms of use', 'Krew Media platform terms of use.'],
+  '/legal-notice': ['Legal notice', 'Legal notice', 'Krew Media legal information.'],
 };
 
 function url(route) { return `${origin}${route === '/' ? '/' : `${route}/`}`; }
@@ -49,12 +49,12 @@ function localizedHtml(html, locale, route, englishFallback) {
     .replace(/<link rel="alternate" hreflang="fr" href="[^"]+" \/>/, `<link rel="alternate" hreflang="fr" href="${frUrl}" />\n    <link rel="alternate" hreflang="en" href="${enUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${origin}/" />`)
     .replace(/<meta property="og:url" content="[^"]+" \/>/, `<meta property="og:url" content="${canonical}" />`);
   if (locale === 'en') {
-    const copy = englishCopy[englishFallback] ?? ['Maritime creator profile', 'A selected maritime creator.', 'Request the commercial profile and media kit from Marine Collabs.'];
-    output = output.replace(/<title>.*?<\/title>/, `<title>${copy[0]} | Marine Collabs</title>`)
+    const copy = englishCopy[englishFallback] ?? ['Maritime creator profile', 'A selected maritime creator.', 'Request the commercial profile and media kit from Krew Media.'];
+    output = output.replace(/<title>.*?<\/title>/, `<title>${copy[0]} | Krew Media</title>`)
       .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${copy[2]}" />`)
-      .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${copy[0]} | Marine Collabs" />`)
+      .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${copy[0]} | Krew Media" />`)
       .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${copy[2]}" />`)
-      .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${copy[0]} | Marine Collabs" />`)
+      .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${copy[0]} | Krew Media" />`)
       .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${copy[2]}" />`)
       .replace(/<meta property="og:locale" content="fr_FR" \/>/, '<meta property="og:locale" content="en_GB" />')
       .replace(/<h1>.*?<\/h1>/, `<h1>${copy[1]}</h1>`)
@@ -81,7 +81,7 @@ function localizedHtml(html, locale, route, englishFallback) {
       .replaceAll('Construire un brief', 'Build the brief')
       .replaceAll('Construire le brief', 'Build the brief')
       .replaceAll('Créer une campagne', 'Build a campaign')
-      .replaceAll('Choisir un créneau', 'Book a call')
+      .replaceAll('Parler à Adrien', 'Contact Adrien')
       .replaceAll('Parler à l’agence', 'Talk to the agency')
       .replaceAll('Parler à l’équipe', 'Talk to the team')
       .replaceAll('Parler de votre campagne', 'Talk about your campaign')

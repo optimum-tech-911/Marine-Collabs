@@ -1,5 +1,47 @@
 # Changelog
 
+## 5.1.0 — 22 July 2026
+
+### Identité et direction
+
+- Passage de l’identité publique à Krew Media dans l’application, les métadonnées, les routes statiques et le manifeste.
+- Intégration du hero vidéo approuvé, avec poster et source mobile, scrim lisible et désactivation sous `prefers-reduced-motion`.
+- Remplacement des 12 captures Instagram publiques par les photos de profil fournies, puis retrait des anciennes captures du build public.
+- Refonte des cartes et fiches créateurs avec avatars distincts des preuves, métriques lisibles au-dessus de la ligne de flottaison et notes méthodologiques explicites.
+- Ajout d’un ruban automatique à deux lignes contenant les 12 profils réels, avec pause au survol/focus et fallback `prefers-reduced-motion`.
+- Ajout d’une carte du monde vectorielle sous le radar, sans nouvel asset généré.
+- Transformation du radar en carte interactive des 12 créateurs : filtres territoriaux, repères issus du roster, niveaux de preuve, sélection détaillée et défilement tactile sur mobile.
+- Remplacement des côtes approximatives par la carte équirectangulaire 2400×1200 fournie et séparation visuelle des groupes de repères Pacifique et Caraïbes.
+- Intégration des quatre visualisations fieldwork fournies dans une grande séquence éditoriale unique, après optimisation de 8,7 Mo à environ 1,6 Mo.
+- Réemploi des scènes fieldwork dans les heroes Créateurs, Solutions et Pour les marques, avec un visuel différent selon la page.
+- Allègement des 12 fiches créateur autour d’un aperçu de profil public, des trois statistiques essentielles, de deux informations terrain et d’actions directes.
+- Ajout d’un avertissement explicite sur le radar : les positions restent éditoriales tant que les coordonnées ne sont pas documentées.
+- Remplacement des visuels générés du fondateur par la photo réelle d’Adrien Cazanave.
+- Remplacement des décors IA visibles par le poster vidéo, les portraits de transition ou des compositions CSS.
+
+### Contact et produit
+
+- Remplacement des entrées de réservation et des redirections vers `/contact` par WhatsApp Business et email directs vers Adrien.
+- Correction du chevauchement des compteurs du hero en séparant strictement le style des nombres animés et celui de leurs libellés.
+- Conservation de la shortlist, de la comparaison, du campaign builder et du contexte des CTA.
+- Suppression des CTA sortants vers les comptes Instagram individuels.
+- Extension de la traduction anglaise aux composants récents, aux formulaires, au radar, aux fiches et aux données de présentation, avec formats de nombres et de dates localisés.
+- Renforcement des animations d’entrée au scroll au niveau des sections et des cartes, avec fallback accessible sous `prefers-reduced-motion`.
+- Conservation de `mediaApproval: 'placeholder'` pour les portraits de transition non encore autorisés comme médias officiels.
+
+### Poids et performance
+
+- Suppression de la copie imbriquée `RNI-Regie-Nautique-Influence-V5/` (environ 181 Mo).
+- Suppression de 68 Mo d’images IA brutes et du dossier public de placeholders éditoriaux IA.
+- Suppression de `motion` et remplacement par `IntersectionObserver`, `requestAnimationFrame` et CSS natifs.
+- Mise à jour justifiée de `package-lock.json` pour retirer les cinq paquets transitifs liés à `motion`; le lockfile n’a pas été régénéré.
+- Bundle initial passé d’environ 148 Ko à 108 Ko gzip; hero vidéo limitée à 2,3 Mo desktop et 1,4 Mo mobile.
+
+### Validation
+
+- `npm run validate` passe, y compris 67 réponses de routes, 26 shells statiques et la 404.
+- Lighthouse mobile non mesuré : aucun navigateur contrôlable n’était disponible dans la session de livraison.
+
 ## 5.0.0 — 20 July 2026
 
 ### Infrastructure

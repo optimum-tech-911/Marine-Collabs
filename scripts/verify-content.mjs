@@ -26,6 +26,13 @@ const creators = blocks.map((block) => ({
   brandFit: extract(block, /(?:^|\n)    brandFit: \[([^\]]+)\]/),
   languages: extract(block, /(?:^|\n)    languages: \[([^\]]+)\]/),
   regions: extract(block, /(?:^|\n)    operatingRegions: \[([^\]]+)\]/),
+  locationLabel: extract(block, /mapLocation:\s*\{[\s\S]*?label: '([^']+)'/),
+  latitude: Number(extract(block, /mapLocation:\s*\{[\s\S]*?latitude: (-?\d+(?:\.\d+)?)/, '999')),
+  longitude: Number(extract(block, /mapLocation:\s*\{[\s\S]*?longitude: (-?\d+(?:\.\d+)?)/, '999')),
+  locationZone: extract(block, /mapLocation:\s*\{[\s\S]*?zone: '([^']+)'/),
+  locationPrecision: extract(block, /mapLocation:\s*\{[\s\S]*?precision: '([^']+)'/),
+  locationEvidence: extract(block, /mapLocation:\s*\{[\s\S]*?evidence: '([^']+)'/),
+  locationNote: extract(block, /mapLocation:\s*\{[\s\S]*?note: '([^']+)'/),
 })).filter((creator) => creator.slug);
 
 if (creators.length !== 12) fail(`12 créateurs attendus, ${creators.length} détectés.`);
@@ -36,21 +43,27 @@ for (const creator of creators) {
   if (!['verified', 'visible-sample', 'estimated'].includes(creator.evidence)) fail(`${creator.slug}: evidence inconnue.`);
   if (!['approved', 'placeholder', 'pending'].includes(creator.mediaApproval)) fail(`${creator.slug}: mediaApproval absent ou invalide.`);
   if (!creator.formats || !creator.brandFit || !creator.languages || !creator.regions) fail(`${creator.slug}: informations commerciales incomplètes.`);
+  if (!creator.locationLabel || !creator.locationNote) fail(`${creator.slug}: localisation cartographique non documentée.`);
+  if (creator.latitude < -90 || creator.latitude > 90 || creator.longitude < -180 || creator.longitude > 180) fail(`${creator.slug}: coordonnées cartographiques invalides.`);
+  if (!['europe', 'caribbean', 'pacific', 'international'].includes(creator.locationZone)) fail(`${creator.slug}: zone cartographique invalide.`);
+  if (!['place', 'region', 'route', 'global'].includes(creator.locationPrecision)) fail(`${creator.slug}: précision cartographique invalide.`);
+  if (!['profile-explicit', 'content-visible', 'roster-region'].includes(creator.locationEvidence)) fail(`${creator.slug}: preuve de localisation invalide.`);
   if (!existsSync(join(root, 'public', creator.image))) fail(`${creator.slug}: image publique absente.`);
 }
 const unique = (values) => new Set(values).size === values.length;
 if (!unique(creators.map((creator) => creator.slug))) fail('Slug créateur dupliqué.');
 if (!unique(creators.map((creator) => creator.handle.toLowerCase()))) fail('Handle créateur dupliqué.');
-note('Identités, métriques, fourchettes et provenance média contrôlées pour 12 créateurs.');
+note('Identités, métriques, provenance média et localisation graduée contrôlées pour 12 créateurs.');
 
-const editorialMedia = read('src/data/editorialMedia.ts');
-const mediaNames = [...editorialMedia.matchAll(/'([a-z0-9-]+)'/g)].map((match) => match[1]);
-const galleryNames = mediaNames.filter((name) => !creators.some((creator) => creator.slug === name));
-for (const name of new Set(galleryNames)) {
-  const file = join(root, 'public/assets/editorial/gallery', `${name}.webp`);
-  if (!existsSync(file)) fail(`Média éditorial référencé mais absent : ${name}.webp`);
+if (existsSync(join(root, 'public/assets/editorial'))) fail('Le dossier historique de placeholders éditoriaux IA doit rester absent.');
+const approvedFieldwork = ['network-at-marina.jpg', 'creator-filming-onboard.jpg', 'navigation-equipment.jpg', 'campaign-conversation.jpg'];
+for (const asset of approvedFieldwork) {
+  if (!existsSync(join(root, 'public/assets/brand/fieldwork', asset))) fail(`Visualisation fieldwork absente : ${asset}`);
 }
-note(`${new Set(galleryNames).size} références de galerie contrôlées.`);
+note('Les quatre visualisations fieldwork fournies sont présentes et l’ancien dossier IA reste absent.');
+if (!existsSync(join(root, 'world_map_true_transparent_2400x1200.png'))) fail('La carte mondiale équirectangulaire fournie est absente.');
+if (read('src/pages/CreatorDetailPage.tsx').includes('creator.platforms[0]?.url')) fail('Une fiche créateur expose encore un CTA direct vers un réseau social.');
+note('La vraie carte mondiale est intégrée et les fiches ne proposent aucun CTA sortant vers Instagram.');
 
 const founder = read('src/data/founder.ts');
 for (const status of ['founder-provided', 'publicly-visible', 'verified-evidence']) {

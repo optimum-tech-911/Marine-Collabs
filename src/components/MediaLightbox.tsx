@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import { useDialogA11y } from '../hooks/useDialogA11y';
 
@@ -32,18 +31,18 @@ export function MediaLightbox({
   }, [index, items.length, onIndexChange, open]);
 
   return (
-    <AnimatePresence>
+    <>
       {open && index !== null ? (
-        <motion.div ref={dialogRef} tabIndex={-1} className="media-lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="dialog" aria-modal="true" aria-label={`Galerie de ${creatorName}`}>
+        <div ref={dialogRef} tabIndex={-1} className="media-lightbox" role="dialog" aria-modal="true" aria-label={`Galerie de ${creatorName}`}>
           <button ref={closeRef} className="media-lightbox__close" type="button" onClick={onClose} aria-label="Fermer la galerie"><X size={21}/></button>
           <button className="media-lightbox__nav media-lightbox__nav--prev" type="button" onClick={() => onIndexChange((index - 1 + items.length) % items.length)} aria-label="Média précédent"><ChevronLeft size={24}/></button>
-          <motion.figure key={`${items[index]}-${index}`} initial={{ opacity: 0, scale: .985 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .22 }}>
+          <figure key={`${items[index]}-${index}`}>
             <img src={items[index]} alt={`Aperçu éditorial ${index + 1} de ${creatorName}`} />
             <figcaption>{creatorName} · {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</figcaption>
-          </motion.figure>
+          </figure>
           <button className="media-lightbox__nav media-lightbox__nav--next" type="button" onClick={() => onIndexChange((index + 1) % items.length)} aria-label="Média suivant"><ChevronRight size={24}/></button>
-        </motion.div>
+        </div>
       ) : null}
-    </AnimatePresence>
+    </>
   );
 }

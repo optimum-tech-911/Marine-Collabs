@@ -10,7 +10,7 @@ export function JoinPage() {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const body = ['CANDIDATURE AU RÉSEAU MARINE COLLABS', '', ...Array.from(data.entries()).map(([key, value]) => `${key} : ${String(value)}`)].join('\n');
+    const body = ['CANDIDATURE AU RÉSEAU KREW MEDIA', '', ...Array.from(data.entries()).map(([key, value]) => `${key} : ${String(value)}`)].join('\n');
     setPreparedMailto(`mailto:${brand.email}?subject=${encodeURIComponent('Candidature réseau créateur')}&body=${encodeURIComponent(body)}`);
     trackEvent('creator_application_prepare', { fields: Array.from(data.keys()).length });
     setSubmitted(true);
@@ -18,7 +18,7 @@ export function JoinPage() {
 
   return (
     <>
-      <section className="join-v4-hero"><div className="join-v4-hero__grid" aria-hidden="true"/><div className="container join-v4-hero__inner"><div><p className="eyebrow eyebrow--light">POUR LES CRÉATEURS</p><h1>Rejoignez un réseau qui comprend le travail derrière le contenu maritime.</h1><p>Marine Collabs représente des marins, capitaines, plongeurs, athlètes, pédagogues et conteurs du nautisme — sans transformer les créateurs en fiches anonymes de marketplace.</p></div><div className="join-v4-hero__badge"><UsersRound size={28}/><strong>Candidatures relues manuellement</strong><small>Aucune acceptation automatique.</small></div></div></section>
+      <section className="join-v4-hero"><div className="join-v4-hero__grid" aria-hidden="true"/><div className="container join-v4-hero__inner"><div><p className="eyebrow eyebrow--light">POUR LES CRÉATEURS</p><h1>Rejoignez un réseau qui comprend le travail derrière le contenu maritime.</h1><p>Krew Media représente des marins, capitaines, plongeurs, athlètes, pédagogues et conteurs du nautisme — sans transformer les créateurs en fiches anonymes de marketplace.</p></div><div className="join-v4-hero__badge"><UsersRound size={28}/><strong>Candidatures relues manuellement</strong><small>Aucune acceptation automatique.</small></div></div></section>
 
       <section className="section join-v4"><div className="container join-v4__grid"><SectionReveal className="join-v4__copy"><p className="eyebrow">CE QUE L’AGENCE PREND EN CHARGE</p><h2>Un soutien commercial sans effacer votre voix.</h2><ul>{['Qualification des demandes de marques','Négociation des livrables et des droits','Coordination commerciale et structure de paiement','Planning, validations et reporting','Profil public professionnel et media kit'].map((item)=><li key={item}><CheckCircle2 size={18}/>{item}</li>)}</ul><div className="join-v4__standard"><ShieldCheck size={22}/><div><strong>Ce que nous recherchons</strong><p>Une participation réelle à la culture maritime, un point de vue reconnaissable, une publication régulière, la confiance de l’audience et une communication professionnelle.</p></div></div></SectionReveal>
 

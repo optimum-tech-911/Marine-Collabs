@@ -45,6 +45,18 @@ Utiliser pour une fourchette de préparation. Ne jamais convertir une estimation
 
 Le changement de statut doit être accompagné d’une autorisation archivée.
 
+## Mise à jour de la carte
+
+La carte lit exclusivement `mapLocation` dans `src/data/creators.ts`. Elle ne représente jamais une position en temps réel.
+
+- `profile-explicit` : le lieu ou le parcours est écrit publiquement sur le profil
+- `content-visible` : une zone est identifiable dans les contenus publics, sans en déduire un domicile
+- `roster-region` : seul le territoire éditorial déjà documenté dans le roster est disponible
+
+Choisir ensuite la précision adaptée : `place`, `region`, `route` ou `global`. Pour une région ou un parcours, les coordonnées sont uniquement un point représentatif permettant le placement visuel. Ne jamais inférer une ville depuis un décor, un drapeau ambigu, une langue ou une nationalité.
+
+Chaque modification doit conserver une `note` lisible expliquant ce que le point signifie et, si nécessaire, ce qu’il ne signifie pas.
+
 ## Mise à jour d’une étude sectorielle
 
 1. privilégier une source officielle ou primaire
@@ -81,3 +93,4 @@ Puis vérifier manuellement :
 - campaign builder
 - métadonnées de la route
 - impression du media kit
+- filtres, sélection clavier et défilement tactile de la carte

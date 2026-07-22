@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://regienautique.fr/sitemap.xml

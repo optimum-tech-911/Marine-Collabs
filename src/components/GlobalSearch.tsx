@@ -1,5 +1,4 @@
 import { ArrowUpRight, Command, Search, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDialogA11y } from '../hooks/useDialogA11y';
 import { Link } from 'react-router-dom';
@@ -33,10 +32,10 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
   }, [query]);
 
   return (
-    <AnimatePresence>
+    <>
       {open ? (
-        <motion.div className="command-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-          <motion.section ref={dialogRef} tabIndex={-1} className="command-dialog" initial={{ opacity: 0, y: 18, scale: .985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: .99 }} transition={{ duration: .2 }} role="dialog" aria-modal="true" aria-label="Rechercher un créateur">
+        <div className="command-overlay" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+          <section ref={dialogRef} tabIndex={-1} className="command-dialog" role="dialog" aria-modal="true" aria-label="Rechercher un créateur">
             <header className="command-dialog__header">
               <Search size={19} />
               <input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Nom, spécialité, région ou secteur…" aria-label="Rechercher un créateur" />
@@ -55,9 +54,9 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
               {!results.length ? <div className="command-empty"><strong>Aucun profil trouvé.</strong><span>Essayez une spécialité comme voile, plongée, surf ou achat bateau.</span></div> : null}
             </div>
             <footer className="command-dialog__footer"><span>Entrée pour ouvrir</span><span>Échap pour fermer</span></footer>
-          </motion.section>
-        </motion.div>
+          </section>
+        </div>
       ) : null}
-    </AnimatePresence>
+    </>
   );
 }

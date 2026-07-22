@@ -1,6 +1,6 @@
 export type AnalyticsEventName =
   | 'page_view'
-  | 'booking_click'
+  | 'contact_click'
   | 'shortlist_add'
   | 'shortlist_remove'
   | 'shortlist_clear'

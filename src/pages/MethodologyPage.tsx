@@ -1,10 +1,10 @@
 import { ArrowUpRight, BarChart3, CalendarClock, Database, FileCheck2, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { EvidenceBadge } from '../components/EvidenceBadge';
 import { SectionReveal } from '../components/SectionReveal';
 import { industryProof } from '../data/industryProof';
 import { networkMetrics } from '../data/network';
 import { humanDate } from '../lib/format';
+import { brand } from '../config/brand';
 
 export function MethodologyPage() {
   return (
@@ -12,7 +12,7 @@ export function MethodologyPage() {
       <section className="methodology-v5-hero">
         <div className="methodology-v5-hero__grid" aria-hidden="true"/>
         <div className="container methodology-v5-hero__inner">
-          <div><p className="eyebrow eyebrow--light">MÉTHODOLOGIE & SOURCES</p><h1>Des chiffres utiles uniquement quand leur preuve est lisible.</h1><p>Marine Collabs distingue les données observées, fournies, vérifiées et estimées. Une estimation sert à préparer un casting ; elle ne devient jamais une promesse de performance.</p></div>
+          <div><p className="eyebrow eyebrow--light">MÉTHODOLOGIE & SOURCES</p><h1>Des chiffres utiles uniquement quand leur preuve est lisible.</h1><p>Krew Media distingue les données observées, fournies, vérifiées et estimées. Une estimation sert à préparer un casting ; elle ne devient jamais une promesse de performance.</p></div>
           <div className="methodology-v5-hero__stamp"><Database size={26}/><strong>Dernière capture du roster</strong><span>{humanDate(networkMetrics.capturedAt)}</span></div>
         </div>
       </section>
@@ -40,7 +40,7 @@ export function MethodologyPage() {
 
       <section className="methodology-v5-proof">
         <div className="container">
-          <SectionReveal className="methodology-v5-proof__heading"><div><p className="eyebrow eyebrow--light">ÉTUDES DU SECTEUR</p><h2>Les sources derrière les chiffres affichés.</h2></div><p>Les statistiques externes ne sont pas des résultats de Marine Collabs. Elles donnent du contexte au marché de l’influence.</p></SectionReveal>
+          <SectionReveal className="methodology-v5-proof__heading"><div><p className="eyebrow eyebrow--light">ÉTUDES DU SECTEUR</p><h2>Les sources derrière les chiffres affichés.</h2></div><p>Les statistiques externes ne sont pas des résultats de Krew Media. Elles donnent du contexte au marché de l’influence.</p></SectionReveal>
           <div className="methodology-v5-proof__grid">
             {industryProof.map((proof, index) => (
               <SectionReveal className={`methodology-v5-proof__card${proof.featured ? ' is-featured' : ''}`} delay={index * .04} key={proof.id}>
@@ -56,7 +56,7 @@ export function MethodologyPage() {
 
       <section className="section methodology-v5-request">
         <div className="container methodology-v5-request__grid">
-          <SectionReveal><p className="eyebrow">AVANT UNE PROPOSITION</p><h2>Les données à demander directement au créateur.</h2><p>Un media kit réellement exploitable doit documenter la période, la plateforme et l’origine de chaque valeur.</p><Link className="button button--dark" to="/contact?intent=media-kit">Demander les données d’audience</Link></SectionReveal>
+          <SectionReveal><p className="eyebrow">AVANT UNE PROPOSITION</p><h2>Les données à demander directement au créateur.</h2><p>Un media kit réellement exploitable doit documenter la période, la plateforme et l’origine de chaque valeur.</p><a className="button button--dark" href={brand.emailUrl}>Demander les données par email</a></SectionReveal>
           <SectionReveal className="methodology-v5-request__list" delay={.06}>
             <div><CalendarClock size={19}/><span><strong>Insights sur 30 ou 90 jours</strong><small>Vues, portée, interactions et contenus les plus performants.</small></span></div>
             <div><BarChart3 size={19}/><span><strong>Moyennes par format</strong><small>Reels, stories, publications, vidéo longue et contenus sponsorisés.</small></span></div>

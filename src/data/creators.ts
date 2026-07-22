@@ -23,6 +23,10 @@ export const creators: Creator[] = [
     brandFit: ['Équipement de voile', 'Électronique marine', 'Sécurité en mer', 'Constructeurs de bateaux'],
     languages: ['Turc', 'Anglais'],
     operatingRegions: ['Méditerranée', 'Navigation internationale'],
+    mapLocation: {
+      label: 'Méditerranée', latitude: 36, longitude: 20, zone: 'europe', precision: 'region', evidence: 'roster-region',
+      note: 'La capture décrit un marin hauturier et plus de 10 000 milles parcourus, sans port-base public. Le point représente la Méditerranée documentée dans le roster.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@canhicyilmaz', url: 'https://www.instagram.com/canhicyilmaz/', followers: 155000 }],
     viewEstimate: {
       low: 600000,
@@ -31,7 +35,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Fourchette indicative fondée sur la taille du compte et une publication orientée Reels. À remplacer par un export Insights sur 30 jours.',
     },
-    image: '/assets/editorial/can-hero.webp',
+    image: '/assets/creators/pfp/can-hicyilmaz.png',
     sourceProof: 'evidence/source-proofs/can-hicyilmaz-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -55,6 +59,10 @@ export const creators: Creator[] = [
     brandFit: ['Offices de tourisme', 'Équipement de croisière', 'Marques outdoor familiales', 'Art de vivre maritime'],
     languages: ['Anglais'],
     operatingRegions: ['Pacifique', 'Navigation internationale'],
+    mapLocation: {
+      label: 'Pacifique · circumnavigation', latitude: -15, longitude: -150, zone: 'international', precision: 'global', evidence: 'profile-explicit',
+      note: 'La bio publique indique une circumnavigation. Le point représente le Pacifique documenté dans le roster, pas une position actuelle.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@sailing_nandji', url: 'https://www.instagram.com/sailing_nandji/', followers: 74100 }],
     viewEstimate: {
       low: 350000,
@@ -63,7 +71,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Fourchette indicative. La portée doit être confirmée à partir des données de plateforme du créateur.',
     },
-    image: '/assets/editorial/nandji-hero.webp',
+    image: '/assets/creators/pfp/sailing-nandji.png',
     sourceProof: 'evidence/source-proofs/sailing-nandji-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -87,6 +95,10 @@ export const creators: Creator[] = [
     brandFit: ['Location et charter', 'Tourisme', 'Équipement de catamaran', 'Lifestyle outdoor'],
     languages: ['Français'],
     operatingRegions: ['Îles du Pacifique', 'Navigation internationale'],
+    mapLocation: {
+      label: 'Îles du Pacifique', latitude: -17, longitude: -149, zone: 'pacific', precision: 'region', evidence: 'roster-region',
+      note: 'La capture montre un voyage insulaire sans lieu textuel précis. Le point représente la zone Pacifique documentée dans le roster.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@cyril_et_magalie', url: 'https://www.instagram.com/cyril_et_magalie/', followers: 15200 }],
     viewEstimate: {
       low: 80000,
@@ -95,7 +107,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Estimation provisoire en attente d’un export analytique standardisé sur 30 jours.',
     },
-    image: '/assets/editorial/cyril-hero.webp',
+    image: '/assets/creators/pfp/cyril-et-magalie.png',
     sourceProof: 'evidence/source-proofs/cyril-et-magalie-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -119,6 +131,10 @@ export const creators: Creator[] = [
     brandFit: ['Chantiers navals', 'Équipement premium', 'Artisanat maritime', 'Campagnes de destination'],
     languages: ['Anglais', 'Allemand', 'Italien'],
     operatingRegions: ['Europe du Nord', 'Navigation internationale'],
+    mapLocation: {
+      label: 'Europe du Nord', latitude: 57, longitude: 10, zone: 'europe', precision: 'region', evidence: 'roster-region',
+      note: 'La bio publique documente les nationalités et le projet de navigation, mais pas de port-base. Le point représente l’Europe du Nord documentée dans le roster.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@sailingmagiccarpet', url: 'https://www.instagram.com/sailingmagiccarpet/', followers: 60000 }],
     viewEstimate: {
       low: 300000,
@@ -127,7 +143,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Fourchette indicative fondée sur l’audience visible et le style de publication. À confirmer avant toute proposition commerciale.',
     },
-    image: '/assets/editorial/magic-carpet-hero.webp',
+    image: '/assets/creators/pfp/sailing-magic-carpet.png',
     sourceProof: 'evidence/source-proofs/sailing-magic-carpet-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -151,6 +167,10 @@ export const creators: Creator[] = [
     brandFit: ['Équipement de plongée', 'Protection de l’océan', 'Tourisme', 'Natation et outdoor'],
     languages: ['Français', 'Anglais'],
     operatingRegions: ['Polynésie française', 'Pacifique'],
+    mapLocation: {
+      label: 'Tahiti · Polynésie française', latitude: -17.65, longitude: -149.43, zone: 'pacific', precision: 'place', evidence: 'profile-explicit',
+      note: 'La bio publique affiche explicitement « Tahiti, French P… » et les contenus visibles mentionnent la Polynésie française.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@meg_slmn', url: 'https://www.instagram.com/meg_slmn/', followers: 28600 }],
     viewEstimate: {
       low: 150000,
@@ -159,7 +179,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Estimation indicative en attente des Insights du créateur sur 30 jours.',
     },
-    image: '/assets/editorial/meg-hero.webp',
+    image: '/assets/creators/pfp/meg-slmn.png',
     sourceProof: 'evidence/source-proofs/meg-slmn-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -183,6 +203,10 @@ export const creators: Creator[] = [
     brandFit: ['Écoles de voile', 'Équipement pour débutants', 'Formation', 'Assurance'],
     languages: ['Français'],
     operatingRegions: ['France', 'Thaïlande'],
+    mapLocation: {
+      label: 'Parcours Thaïlande → France', latitude: 46.2, longitude: 2.2, zone: 'international', precision: 'route', evidence: 'profile-explicit',
+      note: 'La bio publique indique explicitement un projet précédent « Thaïlande-France ». Le point France sert de repère de parcours, pas de résidence précise.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@la_liste_de_mathilde', url: 'https://www.instagram.com/la_liste_de_mathilde/', followers: 10100 }],
     viewEstimate: {
       low: 50000,
@@ -191,7 +215,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Fourchette provisoire. La bibliothèque de contenu reste limitée, les données récentes sont donc essentielles avant de communiquer une portée.',
     },
-    image: '/assets/editorial/mathilde-hero.webp',
+    image: '/assets/creators/pfp/la-liste-de-mathilde.png',
     sourceProof: 'evidence/source-proofs/la-liste-de-mathilde-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -215,6 +239,10 @@ export const creators: Creator[] = [
     brandFit: ['Places de marché nautiques', 'Concessionnaires', 'Financement', 'Assurance', 'Services maritimes'],
     languages: ['Français'],
     operatingRegions: ['France', 'Méditerranée'],
+    mapLocation: {
+      label: 'France · Méditerranée', latitude: 43.3, longitude: 5.4, zone: 'europe', precision: 'region', evidence: 'roster-region',
+      note: 'La capture du profil ne publie pas de ville. Le point représente la zone France–Méditerranée documentée dans le roster.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@best_boat_deals', url: 'https://www.instagram.com/best_boat_deals/', followers: 39100 }],
     viewEstimate: {
       low: 2600000,
@@ -224,7 +252,7 @@ export const creators: Creator[] = [
       note: 'La capture du tableau de bord professionnel fournie affiche 2,6 millions de vues sur les 30 jours précédents.',
     },
     visibleViewSamples: [12500, 50200, 21600],
-    image: '/assets/editorial/adrien-hero.webp',
+    image: '/assets/creators/pfp/best-boat-deals.png',
     sourceProof: 'evidence/source-proofs/best-boat-deals-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -248,6 +276,10 @@ export const creators: Creator[] = [
     brandFit: ['Tourisme local', 'Musées', 'Écoles de voile', 'Services nautiques régionaux'],
     languages: ['Français'],
     operatingRegions: ['Bassin d’Arcachon', 'France'],
+    mapLocation: {
+      label: 'Bassin d’Arcachon · France', latitude: 44.66, longitude: -1.17, zone: 'europe', precision: 'place', evidence: 'profile-explicit',
+      note: 'La bio publique affiche explicitement « Les secrets du Bassin d’Arcachon ».',
+    },
     platforms: [{ platform: 'Instagram', handle: '@alessiopdlf.nautic', url: 'https://www.instagram.com/alessiopdlf.nautic/', followers: 207 }],
     viewEstimate: {
       low: 50000,
@@ -257,7 +289,7 @@ export const creators: Creator[] = [
       note: 'Fourchette indicative éclairée par trois Reels visibles à environ 5,6 K, 32,6 K et 11,4 K vues. Il ne s’agit pas d’un total mensuel vérifié.',
     },
     visibleViewSamples: [5573, 32600, 11400],
-    image: '/assets/editorial/alessio-hero.webp',
+    image: '/assets/creators/pfp/alessio-pandolfi-nautic.png',
     sourceProof: 'evidence/source-proofs/alessio-pandolfi-nautic-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -281,6 +313,10 @@ export const creators: Creator[] = [
     brandFit: ['Constructeurs de bateaux', 'Services de convoyage', 'Équipement de sécurité', 'Formation'],
     languages: ['Anglais'],
     operatingRegions: ['Europe', 'Méditerranée', 'Convoyage international'],
+    mapLocation: {
+      label: 'Europe · Méditerranée', latitude: 44, longitude: 15, zone: 'europe', precision: 'route', evidence: 'content-visible',
+      note: 'Les éléments visibles mentionnent des navigations en Norvège et en Grèce. Le point est un repère de zone de convoyage, pas un port-base.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@captain.redgi', url: 'https://www.instagram.com/captain.redgi/', followers: 26300 }],
     viewEstimate: {
       low: 150000,
@@ -289,7 +325,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Fourchette indicative. À confirmer dans les données du créateur avant intégration à une proposition.',
     },
-    image: '/assets/editorial/captain-redgi-hero.webp',
+    image: '/assets/creators/pfp/captain-redgi.png',
     sourceProof: 'evidence/source-proofs/captain-redgi-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -313,6 +349,10 @@ export const creators: Creator[] = [
     brandFit: ['Équipement de surf', 'Vêtements de sport', 'Voyage', 'Hydratation et performance'],
     languages: ['Français', 'Anglais'],
     operatingRegions: ['Guadeloupe', 'Caraïbes', 'Europe'],
+    mapLocation: {
+      label: 'Guadeloupe · Caraïbes', latitude: 16.27, longitude: -61.55, zone: 'caribbean', precision: 'place', evidence: 'profile-explicit',
+      note: 'La bio publique indique explicitement « Professional surfer from Guadeloupe ».',
+    },
     platforms: [{ platform: 'Instagram', handle: '@thomas_dbrr', url: 'https://www.instagram.com/thomas_dbrr/', followers: 7697 }],
     viewEstimate: {
       low: 40000,
@@ -321,7 +361,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Estimation provisoire. Les performances d’un compte d’athlète peuvent fortement varier selon les compétitions et les contenus viraux.',
     },
-    image: '/assets/editorial/thomas-hero.webp',
+    image: '/assets/creators/pfp/thomas-debierre.png',
     sourceProof: 'evidence/source-proofs/thomas-debierre-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -345,6 +385,10 @@ export const creators: Creator[] = [
     brandFit: ['Équipement de plongée', 'Équipement de voile', 'Voyage jeune', 'Éducation maritime'],
     languages: ['Français', 'Anglais'],
     operatingRegions: ['Guadeloupe', 'Voyage international'],
+    mapLocation: {
+      label: 'Guadeloupe · voyages internationaux', latitude: 16.27, longitude: -61.55, zone: 'caribbean', precision: 'region', evidence: 'content-visible',
+      note: 'La capture ne publie pas de base, mais un highlight Guadeloupe est visible aux côtés de voyages en Indonésie, Inde et Stockholm.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@antoine_fernandezh', url: 'https://www.instagram.com/antoine_fernandezh/', followers: 14100 }],
     viewEstimate: {
       low: 70000,
@@ -353,7 +397,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Estimation indicative en attente de données standardisées du créateur.',
     },
-    image: '/assets/editorial/antoine-hero.webp',
+    image: '/assets/creators/pfp/antoine-fernandez.png',
     sourceProof: 'evidence/source-proofs/antoine-fernandez-source.png',
     sourceCapturedAt: capturedAt,
   },
@@ -377,6 +421,10 @@ export const creators: Creator[] = [
     brandFit: ['Écoles de voile', 'Équipement technique', 'Chantiers navals', 'Organismes de formation'],
     languages: ['Français'],
     operatingRegions: ['France', 'Méditerranée'],
+    mapLocation: {
+      label: 'France · Méditerranée', latitude: 43, longitude: 6, zone: 'europe', precision: 'region', evidence: 'roster-region',
+      note: 'La bio publique ne publie pas de ville. Le point représente la zone France–Méditerranée documentée dans le roster.',
+    },
     platforms: [{ platform: 'Instagram', handle: '@les_topos_dun_boc', url: 'https://www.instagram.com/les_topos_dun_boc/', followers: 4219 }],
     viewEstimate: {
       low: 25000,
@@ -385,7 +433,7 @@ export const creators: Creator[] = [
       period: '30 days',
       note: 'Estimation provisoire. Les micro-créateurs techniques doivent aussi être évalués sur la confiance et la pertinence, pas seulement sur la portée.',
     },
-    image: '/assets/editorial/topos-hero.webp',
+    image: '/assets/creators/pfp/les-topos-dun-boc.png',
     sourceProof: 'evidence/source-proofs/les-topos-dun-boc-source.png',
     sourceCapturedAt: capturedAt,
   },

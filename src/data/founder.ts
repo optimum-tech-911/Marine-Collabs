@@ -16,7 +16,7 @@ export const founderProfile = {
   biography: 'Douze ans dans le nautisme. Yachtmaster Ocean. Plusieurs transatlantiques. Vingt-huit bateaux achetés et revendus. Adrien ne parle pas du nautisme de l’extérieur : il en vit.',
   proofTitle: 'La preuve par son propre compte.',
   proofText: 'En documentant ses aventures et son expertise sur @best_boat_deals, Adrien a réuni près de 40 000 abonnés en quatre mois et dépassé 2,5 millions de vues sur 30 jours.',
-  salesLine: 'Ce qu’il a fait pour ses propres bateaux, Marine Collabs le fait pour votre marque.',
+  salesLine: 'Ce qu’il a fait pour ses propres bateaux, Krew Media le fait pour votre marque.',
   claims: [
     { label: 'Expérience', value: '12 ans dans le nautisme', status: 'founder-provided', note: 'Déclaration du fondateur à documenter dans le dossier commercial.' },
     { label: 'Qualification', value: 'Yachtmaster Ocean', status: 'founder-provided', note: 'Qualification déclarée par le fondateur ; conserver le justificatif avant publication définitive.' },

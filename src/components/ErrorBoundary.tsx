@@ -10,7 +10,7 @@ export class ErrorBoundary extends Component<PropsWithChildren, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    if (import.meta.env.DEV) console.error('Marine Collabs rendering error', error, info);
+    if (import.meta.env.DEV) console.error('Krew Media rendering error', error, info);
   }
 
   render(): ReactNode {
@@ -19,7 +19,7 @@ export class ErrorBoundary extends Component<PropsWithChildren, State> {
     return (
       <main className="fatal-error">
         <div>
-          <span>Marine Collabs</span>
+          <span>Krew Media</span>
           <h1>{french ? 'Cette page n’a pas pu être affichée.' : 'This page could not be displayed.'}</h1>
           <p>{french ? 'Rechargez la page. Si le problème persiste, revenez à l’accueil et reprenez votre parcours.' : 'Reload the page. If the issue persists, return home and continue your journey.'}</p>
           <div>

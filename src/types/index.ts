@@ -26,6 +26,20 @@ export interface PlatformMetric {
   followers: number;
 }
 
+export type CreatorMapZone = 'europe' | 'caribbean' | 'pacific' | 'international';
+export type CreatorLocationPrecision = 'place' | 'region' | 'route' | 'global';
+export type CreatorLocationEvidence = 'profile-explicit' | 'content-visible' | 'roster-region';
+
+export interface CreatorMapLocation {
+  label: string;
+  latitude: number;
+  longitude: number;
+  zone: CreatorMapZone;
+  precision: CreatorLocationPrecision;
+  evidence: CreatorLocationEvidence;
+  note: string;
+}
+
 export interface Creator {
   id: string;
   slug: string;
@@ -46,6 +60,7 @@ export interface Creator {
   brandFit: string[];
   languages: string[];
   operatingRegions: string[];
+  mapLocation: CreatorMapLocation;
   platforms: PlatformMetric[];
   viewEstimate: ViewEstimate;
   visibleViewSamples?: number[];

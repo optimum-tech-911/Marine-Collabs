@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, BarChart3, CalendarDays, CheckCircle2, ClipboardCheck, Eye, Handshake, Layers3, ShieldCheck, Target, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { BookingLink } from '../components/BookingLink';
+import { ContactLink } from '../components/ContactLink';
 import { SectionReveal } from '../components/SectionReveal';
 import { creators } from '../data/creators';
 import { networkMetrics } from '../data/network';
@@ -17,11 +17,11 @@ export function ForBrandsPage() {
           <div>
             <p className="eyebrow eyebrow--light">POUR LES MARQUES</p>
             <h1>Faites parler de votre marque par ceux que le nautisme écoute déjà.</h1>
-            <p>Marine Collabs construit et coordonne des campagnes avec des créateurs spécialisés dans la voile, la plongée, le surf, les bateaux et la vie en mer.</p>
-            <div className="brands-v4-hero__actions"><BookingLink className="button button--primary button--hero" placement="brands_hero">Choisir un créneau <ArrowRight size={18}/></BookingLink><Link className="button button--ghost-light button--hero" to="/creators">Explorer le réseau</Link></div>
+            <p>Krew Media construit et coordonne des campagnes avec des créateurs spécialisés dans la voile, la plongée, le surf, les bateaux et la vie en mer.</p>
+            <div className="brands-v4-hero__actions"><ContactLink className="button button--primary button--hero" placement="brands_hero">Parler à Adrien <ArrowRight size={18}/></ContactLink><Link className="button button--ghost-light button--hero" to="/creators">Explorer le réseau</Link></div>
             <div className="brands-v4-hero__proof"><span><Users size={17}/>{creators.length} créateurs</span><span><Eye size={17}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span><span><ShieldCheck size={17}/>Casting piloté par l’agence</span></div>
           </div>
-          <div className="brands-v4-hero__media"><img src="/assets/editorial/gallery/catamaran-couple.webp" alt="Équipage échangeant à bord d’un voilier"/><div><span>01</span><strong>Un seul brief</strong><small>Un casting, des contenus et une coordination centralisés.</small></div></div>
+          <div className="brands-v4-hero__media"><img src="/assets/brand/fieldwork/campaign-conversation.jpg" alt="Deux professionnels préparant une campagne autour d’une carte marine"/><div><span>01</span><strong>Un seul brief</strong><small>Un casting, des contenus et une coordination centralisés.</small></div></div>
         </div>
       </section>
 
@@ -31,7 +31,7 @@ export function ForBrandsPage() {
           <div className="brands-v4-value-grid">
             {[
               [Target,'Un casting pertinent','Des profils sélectionnés selon l’objectif, le marché, le territoire et le niveau de technicité attendu.'],
-              [Handshake,'Une seule relation agence','Marine Collabs coordonne les créateurs, le brief, les validations, les droits et le calendrier.'],
+              [Handshake,'Une seule relation agence','Krew Media coordonne les créateurs, le brief, les validations, les droits et le calendrier.'],
               [Layers3,'Une combinaison flexible','Associez portée, expertise et proximité grâce à des castings multi-créateurs.'],
               [ShieldCheck,'Une exécution cadrée','Livrables, disclosure, exclusivité, droits d’utilisation et preuves de publication définis en amont.'],
             ].map(([Icon,title,text],index)=>{const C=Icon as typeof Target;return <SectionReveal className="brands-v4-value-card" delay={index*.04} key={String(title)}><span>{String(index+1).padStart(2,'0')}</span><C size={22}/><h3>{String(title)}</h3><p>{String(text)}</p></SectionReveal>})}
@@ -79,7 +79,7 @@ export function ForBrandsPage() {
 
       <section className="brands-v5-founder">
         <div className="container brands-v5-founder__grid">
-          <SectionReveal className="brands-v5-founder__media"><img src="/assets/editorial/adrien-hero.webp" alt="Univers nautique illustrant le terrain et l’expérience du fondateur" loading="lazy"/><div><strong>2,6 M</strong><span>vues documentées sur 30 jours</span></div></SectionReveal>
+          <SectionReveal className="brands-v5-founder__media"><img src="/assets/brand/adrien-cazanave.jpg" alt="Adrien Cazanave à bord d’un voilier" loading="lazy" decoding="async"/><div><strong>2,6 M</strong><span>vues documentées sur 30 jours</span></div></SectionReveal>
           <SectionReveal className="brands-v5-founder__copy" delay={.05}><p className="eyebrow eyebrow--light">{founderProfile.eyebrow}</p><h2>{founderProfile.title}</h2><p>{founderProfile.biography}</p><h3>{founderProfile.proofTitle}</h3><p>{founderProfile.proofText}</p><blockquote>{founderProfile.salesLine}</blockquote><div>{founderProfile.claims.slice(0, 4).map((claim) => <span title={claim.note} key={claim.label}>{claim.value}</span>)}</div></SectionReveal>
         </div>
       </section>
@@ -90,9 +90,9 @@ export function ForBrandsPage() {
           <div className="brands-v5-faq__items">
             {[
               ['Quel budget faut-il prévoir ?', 'La proposition dépend du nombre de créateurs, des formats, de la durée, des droits d’utilisation, du paid media et de l’exclusivité. Une fourchette de budget permet d’éviter un casting irréaliste.'],
-              ['Peut-on choisir directement un créateur ?', 'Oui, la sélection sert à exprimer une préférence. Marine Collabs confirme ensuite la pertinence, la disponibilité et les conditions commerciales avant toute validation.'],
+              ['Peut-on choisir directement un créateur ?', 'Oui, la sélection sert à exprimer une préférence. Krew Media confirme ensuite la pertinence, la disponibilité et les conditions commerciales avant toute validation.'],
               ['Les performances sont-elles garanties ?', 'Non. Les métriques historiques et les estimations servent à préparer la campagne, jamais à garantir un résultat futur. Chaque chiffre affiche son niveau de preuve.'],
-              ['Qui gère les droits et les validations ?', 'Marine Collabs cadre les livrables, les dates, le processus de validation, les droits organiques ou publicitaires et l’exclusivité avec la marque et les créateurs.'],
+              ['Qui gère les droits et les validations ?', 'Krew Media cadre les livrables, les dates, le processus de validation, les droits organiques ou publicitaires et l’exclusivité avec la marque et les créateurs.'],
               ['La marque contacte-t-elle les créateurs directement ?', 'L’agence reste le point de coordination afin de centraliser le brief, les échanges, les validations et le reporting.'],
             ].map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
           </div>
@@ -101,8 +101,8 @@ export function ForBrandsPage() {
 
       <section className="brands-v4-booking">
         <div className="container brands-v4-booking__inner">
-          <div><p className="eyebrow">PARLONS DE VOTRE MARQUE</p><h2>Un échange, pas un pitch commercial.</h2><p>Trente minutes avec Adrien pour comprendre votre marque et vous dire concrètement ce que l’influence nautique peut vous apporter. Un vrai marin au bout du fil. Pas de bot, pas de script.</p><small>Sans engagement. Si ce n’est pas pertinent pour vous, on vous le dira.</small></div>
-          <BookingLink className="button button--dark button--hero" placement="brands_booking"><CalendarDays size={18}/> Choisir un créneau <ArrowRight size={18}/></BookingLink>
+          <div><p className="eyebrow">PARLONS DE VOTRE MARQUE</p><h2>Un échange, pas un pitch commercial.</h2><p>Écrivez ou appelez Adrien pour lui présenter votre marque et comprendre concrètement ce que l’influence nautique peut vous apporter. Un vrai marin au bout du fil. Pas de bot, pas de script.</p><small>Sans engagement. Si ce n’est pas pertinent pour vous, on vous le dira.</small></div>
+          <ContactLink className="button button--dark button--hero" placement="brands_contact"><CalendarDays size={18}/> Parler à Adrien <ArrowRight size={18}/></ContactLink>
         </div>
       </section>
     </>

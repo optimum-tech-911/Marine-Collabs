@@ -1,5 +1,5 @@
 {
-  "name": "rni-regie-nautique-influence",
+  "name": "krew-media-platform",
   "private": true,
   "version": "5.0.0",
   "type": "module",
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "lucide-react": "1.24.0",
-    "motion": "12.42.2",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-router-dom": "7.18.1"
