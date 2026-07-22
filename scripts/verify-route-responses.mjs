@@ -1,18 +1,13 @@
 import { spawn } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 
 const host = '127.0.0.1';
 const port = 4399;
 const origin = `http://${host}:${port}`;
-const creatorSource = await readFile(path.join(process.cwd(), 'src/data/creators.ts'), 'utf8');
-const creatorSlugs = [...creatorSource.matchAll(/(?:^|\n)    slug: '([^']+)'/g)].map((match) => match[1]);
 const routes = [
-  '/', '/creators', ...creatorSlugs.map((slug) => `/creators/${slug}`),
+  '/', '/creators',
   '/solutions', '/for-brands', '/campaign-builder', '/selection', '/methodology',
   '/case-studies', '/about', '/join-the-network', '/contact', '/privacy', '/terms', '/legal', '/404.html',
   '/fr/', '/en/', '/fr/createurs/', '/en/creators/',
-  ...creatorSlugs.flatMap((slug) => [`/fr/createurs/${slug}/`, `/en/creators/${slug}/`]),
   '/fr/solutions/', '/en/solutions/', '/fr/pour-les-marques/', '/en/for-brands/',
   '/fr/creer-une-campagne/', '/en/build-a-campaign/', '/fr/a-propos/', '/en/about/',
   '/fr/contact/', '/en/contact/', '/fr/methodologie/', '/en/methodology/',

@@ -22,9 +22,9 @@ Le dossier historique `public/assets/editorial/` a été supprimé : aucun ancie
 
 ## `public/assets/creators/`
 
-- `pfp/*.png` : avatars publics fournis par le propriétaire du projet, utilisés pour les cartes, le radar, le ruban et les fiches créateur. Ils restent marqués `placeholder` dans le dataset tant que l'autorisation créateur n'est pas archivée.
+- `pfp/*.png` : avatars publics fournis par le propriétaire du projet, utilisés pour les cartes de présentation, le radar et le ruban. Ils restent marqués `placeholder` dans le dataset tant que l'autorisation créateur n'est pas archivée.
 - Les anciennes captures Instagram `.webp` ont été retirées du dossier public. Les preuves restent uniquement dans `evidence/`.
-- Les fiches ne proposent aucun bouton vers le compte Instagram individuel ; l’agence conserve le contexte et le contact commercial.
+- Aucune fiche créateur individuelle n’est publiée ; l’accueil et la page Créateurs restent les seules surfaces de présentation publiques.
 
 Crops légers de transition. Ils permettent de reconnaître temporairement certains profils, mais doivent être remplacés par des fichiers HD originaux et autorisés avant lancement commercial.
 

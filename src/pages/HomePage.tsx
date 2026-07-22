@@ -26,7 +26,9 @@ import { siteCopy } from '../data/siteCopy';
 import { brand } from '../config/brand';
 import { formatCompact, formatFull } from '../lib/format';
 
-const featured = creators.filter((creator) => creator.featured).slice(0, 4);
+// The homepage is intentionally a short preview. Ordering by the audience
+// recorded in the roster keeps the three displayed profiles deterministic.
+const featured = [...creators].sort((first, second) => second.followers - first.followers).slice(0, 3);
 const adrien = creators.find((creator) => creator.slug === 'best-boat-deals');
 
 
@@ -132,10 +134,10 @@ export function HomePage() {
       <section className="section home-v4-roster">
         <div className="container">
           <SectionReveal className="section-header home-v4-section-header">
-            <div><p className="eyebrow eyebrow--light">LE RÉSEAU</p><h2>Les créateurs qui vivent réellement le nautisme.</h2></div>
-            <div><p>Forte audience, expertise précise ou crédibilité terrain : chaque profil est sélectionné pour une raison exploitable par les marques.</p><Link className="text-link text-link--light" to="/creators">Voir le réseau <ArrowRight size={17}/></Link></div>
+            <div><p className="eyebrow eyebrow--light">LE RÉSEAU</p><h2>Aperçu de nos créateurs.</h2></div>
+            <div><Link className="text-link text-link--light" to="/creators">Voir le réseau <ArrowRight size={17}/></Link></div>
           </SectionReveal>
-          <div className="creator-grid creator-grid--three home-v4-roster__grid">{featured.slice(0, 3).map((creator, index) => <CreatorCard creator={creator} index={index} key={creator.slug}/>)}</div>
+          <div className="creator-grid creator-grid--three home-v4-roster__grid">{featured.map((creator, index) => <CreatorCard creator={creator} index={index} key={creator.slug}/>)}</div>
         </div>
       </section>
 

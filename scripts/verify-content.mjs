@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.cwd();
@@ -62,8 +62,24 @@ for (const asset of approvedFieldwork) {
 }
 note('Les quatre visualisations fieldwork fournies sont présentes et l’ancien dossier IA reste absent.');
 if (!existsSync(join(root, 'world_map_true_transparent_2400x1200.png'))) fail('La carte mondiale équirectangulaire fournie est absente.');
-if (read('src/pages/CreatorDetailPage.tsx').includes('creator.platforms[0]?.url')) fail('Une fiche créateur expose encore un CTA direct vers un réseau social.');
-note('La vraie carte mondiale est intégrée et les fiches ne proposent aucun CTA sortant vers Instagram.');
+if (existsSync(join(root, 'src/pages/CreatorDetailPage.tsx'))) fail('Une fiche créateur individuelle existe encore.');
+note('La vraie carte mondiale est intégrée et aucune fiche créateur individuelle n’est publiée.');
+
+const uiSources = [];
+function collectUiSources(directory) {
+  for (const entry of readdirSync(directory)) {
+    const target = join(directory, entry);
+    if (statSync(target).isDirectory()) collectUiSources(target);
+    else if (/\.tsx?$/.test(entry) && !target.endsWith('english-copy.ts')) uiSources.push(readFileSync(target, 'utf8'));
+  }
+}
+collectUiSources(join(root, 'src'));
+const uiSource = uiSources.join('\n');
+if (/\/(?:creators|createurs)\/\$\{/.test(uiSource)) fail('Un lien vers une fiche créateur individuelle existe encore.');
+for (const label of ['Voir le profil', 'Voir la fiche', 'Ouvrir le profil']) {
+  if (uiSource.includes(label)) fail(`CTA de fiche créateur encore présent : ${label}`);
+}
+note('La règle sans fiche individuelle est contrôlée dans toutes les sources d’interface.');
 
 const founder = read('src/data/founder.ts');
 for (const status of ['founder-provided', 'publicly-visible', 'verified-evidence']) {
@@ -73,7 +89,7 @@ if (!founder.includes('2,6 M vues sur 30 jours')) fail('Preuve fondatrice 2,6 M 
 note('Claims fondateur séparés par niveau de preuve.');
 
 const srcFiles = [
-  'src/pages/HomePage.tsx', 'src/pages/CreatorsPage.tsx', 'src/pages/CreatorDetailPage.tsx',
+  'src/pages/HomePage.tsx', 'src/pages/CreatorsPage.tsx',
   'src/pages/ForBrandsPage.tsx', 'src/pages/SolutionsPage.tsx', 'src/pages/AboutPage.tsx',
   'src/pages/ContactPage.tsx', 'src/pages/CampaignBuilderPage.tsx', 'src/components/Header.tsx',
   'src/components/Footer.tsx',

@@ -5,6 +5,7 @@ export const brand = {
   descriptorEn: 'The maritime influence agency',
   email: 'adrien.cazanave@gmail.com',
   phone: '+33 6 05 51 86 10',
+  phoneUrl: 'tel:+33605518610',
   whatsappUrl: 'https://wa.me/33605518610?text=Bonjour%20Adrien%2C%20je%20souhaite%20%C3%A9changer%20au%20sujet%20d%E2%80%99une%20campagne%20nautique.',
   emailUrl: 'mailto:adrien.cazanave@gmail.com?subject=Projet%20de%20campagne%20nautique&body=Bonjour%20Adrien%2C%0A%0AJe%20souhaite%20%C3%A9changer%20au%20sujet%20de%20notre%20marque%20et%20d%E2%80%99une%20campagne%20nautique.%0A',
   location: 'France · Méditerranée · International',

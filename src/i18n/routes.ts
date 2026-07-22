@@ -1,19 +1,19 @@
 export type Locale = 'fr' | 'en';
 
 export type RouteKey =
-  | 'home' | 'creators' | 'creator' | 'solutions' | 'brands' | 'campaign'
+  | 'home' | 'creators' | 'solutions' | 'brands' | 'campaign'
   | 'cases' | 'about' | 'join' | 'contact' | 'selection' | 'methodology'
   | 'privacy' | 'terms' | 'legal';
 
 const paths: Record<Locale, Record<RouteKey, string>> = {
   fr: {
-    home: '/', creators: '/createurs', creator: '/createurs', solutions: '/solutions',
+    home: '/', creators: '/createurs', solutions: '/solutions',
     brands: '/pour-les-marques', campaign: '/creer-une-campagne', cases: '/cas-clients',
     about: '/a-propos', join: '/rejoindre-le-reseau', contact: '/contact', selection: '/selection',
     methodology: '/methodologie', privacy: '/confidentialite', terms: '/conditions', legal: '/mentions-legales',
   },
   en: {
-    home: '/', creators: '/creators', creator: '/creators', solutions: '/solutions',
+    home: '/', creators: '/creators', solutions: '/solutions',
     brands: '/for-brands', campaign: '/build-a-campaign', cases: '/case-studies',
     about: '/about', join: '/join-the-network', contact: '/contact', selection: '/selection',
     methodology: '/methodology', privacy: '/privacy', terms: '/terms', legal: '/legal-notice',
@@ -44,27 +44,23 @@ export function stripLocale(pathname: string) {
 export function routeKeyFromPath(pathname: string): RouteKey | null {
   const chunks = stripLocale(pathname).split('/').filter(Boolean);
   if (!chunks.length) return 'home';
-  if ((chunks[0] === 'creators' || chunks[0] === 'createurs') && chunks[1]) return 'creator';
   return aliases[chunks[0] ?? ''] ?? null;
 }
 
-export function localizedPath(locale: Locale, key: RouteKey, slug?: string) {
+export function localizedPath(locale: Locale, key: RouteKey) {
   const base = paths[locale][key];
-  const suffix = key === 'creator' && slug ? `/${slug}` : '';
-  return `/${locale}${base}${suffix}/`.replace(/\/$/, '/');
+  return `/${locale}${base}/`.replace(/\/$/, '/');
 }
 
 export function equivalentPath(pathname: string, target: Locale) {
   const key = routeKeyFromPath(pathname);
-  const chunks = stripLocale(pathname).split('/').filter(Boolean);
-  return key === 'creator' ? localizedPath(target, 'creator', chunks[1]) : localizedPath(target, key ?? 'home');
+  return localizedPath(target, key ?? 'home');
 }
 
 export function parseLocalizedRoute(pathname: string) {
   const locale = localeFromPathname(pathname);
   const key = routeKeyFromPath(pathname);
-  const chunks = stripLocale(pathname).split('/').filter(Boolean);
-  return { locale, key, slug: key === 'creator' ? chunks[1] : undefined };
+  return { locale, key };
 }
 
 export const LOCALIZED_ROUTE_KEYS = Object.keys(paths.fr) as RouteKey[];

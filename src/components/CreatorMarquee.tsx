@@ -8,7 +8,7 @@ function MarqueeCard({ creator, duplicate = false }: { creator: (typeof creators
   const viewLabel = creator.viewEstimate.evidence === 'verified' ? 'vues / 30 j' : 'vues estimées / 30 j';
 
   return (
-    <Link className="creator-marquee__card" to={`/creators/${creator.slug}`} aria-hidden={duplicate || undefined} tabIndex={duplicate ? -1 : undefined}>
+    <article className="creator-marquee__card" aria-hidden={duplicate || undefined}>
       <img src={creator.image} alt="" loading="lazy" decoding="async" />
       <span className="creator-marquee__identity">
         <strong>{creator.handle}</strong>
@@ -16,8 +16,7 @@ function MarqueeCard({ creator, duplicate = false }: { creator: (typeof creators
       </span>
       <span className="creator-marquee__metric"><Users size={14}/><b>{formatCompact(creator.followers)}</b><small>abonnés</small></span>
       <span className="creator-marquee__metric"><Eye size={14}/><b>{formatRange(creator.viewEstimate.low, creator.viewEstimate.high)}</b><small>{viewLabel}</small></span>
-      <ArrowRight className="creator-marquee__arrow" size={17} aria-hidden="true" />
-    </Link>
+    </article>
   );
 }
 

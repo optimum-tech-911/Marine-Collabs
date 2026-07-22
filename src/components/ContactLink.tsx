@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { brand } from '../config/brand';
 import { trackEvent } from '../lib/analytics';
+import { useContactUrls } from '../hooks/useContactUrls';
 
 type ContactLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'> & {
   children: ReactNode;
@@ -8,10 +8,11 @@ type ContactLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | '
 };
 
 export function ContactLink({ className, children, placement = 'unspecified', onClick, ...props }: ContactLinkProps) {
+  const { whatsappUrl } = useContactUrls();
   return (
     <a
       className={className}
-      href={brand.whatsappUrl}
+      href={whatsappUrl}
       target="_blank"
       rel="noreferrer"
       onClick={(event) => {

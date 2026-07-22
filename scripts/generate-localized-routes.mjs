@@ -12,10 +12,6 @@ const sourceRoutes = [
   ['selection', '/selection', '/selection'], ['methodology', '/methodologie', '/methodology'],
   ['privacy', '/confidentialite', '/privacy'], ['terms', '/conditions', '/terms'], ['legal', '/mentions-legales', '/legal-notice'],
 ];
-const creatorSource = await readFile(path.join(root, 'src/data/creators.ts'), 'utf8');
-const slugs = [...creatorSource.matchAll(/(?:^|\n)    slug: '([^']+)'/g)].map((match) => match[1]);
-for (const slug of slugs) sourceRoutes.push([`creators/${slug}`, `/createurs/${slug}`, `/creators/${slug}`]);
-
 const englishCopy = {
   '/': ['Maritime influence agency', 'The voices your customers already listen to.', 'Krew Media selects and coordinates maritime creators for credible, human and measurable campaigns.'],
   '/creators': ['Maritime creators', 'Creators who genuinely live the maritime world.', 'Explore a selected network of sailors, captains, divers, athletes and marine specialists.'],
@@ -86,7 +82,7 @@ function localizedHtml(html, locale, route, englishFallback) {
       .replaceAll('Parler à l’équipe', 'Talk to the team')
       .replaceAll('Parler de votre campagne', 'Talk about your campaign')
       .replaceAll('Retour à l’accueil', 'Back to home')
-      .replaceAll('L’interface interactive se charge automatiquement. Les données détaillées et les outils de sélection nécessitent JavaScript.', 'The interactive interface loads automatically. Detailed data and selection tools require JavaScript.')
+      .replaceAll('L’interface interactive se charge automatiquement. Les outils de sélection nécessitent JavaScript.', 'The interactive interface loads automatically. Selection tools require JavaScript.')
       .replaceAll('abonnés visibles', 'visible followers')
       .replaceAll('publications visibles', 'visible posts')
       .replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, start, json, end) => {

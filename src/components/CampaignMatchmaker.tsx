@@ -1,6 +1,5 @@
 import { ArrowRight, Bookmark, CheckCircle2, Compass, Sparkles, Target } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useShortlist } from '../context/ShortlistContext';
 import { creators } from '../data/creators';
 import { getCreatorCommercialProfile, type CampaignObjectiveId } from '../data/creatorCommercialProfiles';
@@ -97,8 +96,8 @@ export function CampaignMatchmaker() {
           {matches.map(({ creator, reasons }, index) => {
             const selected = hasCreator(creator.slug);
             return <article key={creator.slug}>
-              <Link to={`/creators/${creator.slug}`}><img src={creator.image} alt="" loading="lazy"/><span>{String(index + 1).padStart(2, '0')}</span></Link>
-              <div><p>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</p><h3>{creator.displayName}</h3><small>{formatCompact(creator.followers)} abonnés · {creator.handle}</small><ul>{reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul><div><Link className="text-link" to={`/creators/${creator.slug}`}>Voir le profil</Link><button className={selected ? 'is-selected' : ''} type="button" onClick={() => toggleCreator(creator.slug)} aria-pressed={selected}><Bookmark size={15} fill={selected ? 'currentColor' : 'none'}/>{selected ? 'Sélectionné' : 'Ajouter'}</button></div></div>
+              <div className="matchmaker-v5__media"><img src={creator.image} alt="" loading="lazy"/><span>{String(index + 1).padStart(2, '0')}</span></div>
+              <div className="matchmaker-v5__copy"><p>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</p><h3>{creator.displayName}</h3><small>{formatCompact(creator.followers)} abonnés · {creator.handle}</small><ul>{reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul><div><button className={selected ? 'is-selected' : ''} type="button" onClick={() => toggleCreator(creator.slug)} aria-pressed={selected}><Bookmark size={15} fill={selected ? 'currentColor' : 'none'}/>{selected ? 'Sélectionné' : 'Ajouter'}</button></div></div>
             </article>;
           })}
         </div>

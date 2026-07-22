@@ -18,7 +18,6 @@ const required = [
   'src/lib/analytics.ts',
   'src/pages/HomePage.tsx',
   'src/pages/CreatorsPage.tsx',
-  'src/pages/CreatorDetailPage.tsx',
   'src/pages/SelectionPage.tsx',
   'src/pages/MethodologyPage.tsx',
   'scripts/generate-static-routes.mjs',
@@ -48,6 +47,7 @@ for (const file of ['index.html', 'public/site.webmanifest', 'public/sitemap.xml
   if (content.includes('example.com')) fail(`${file} contient encore example.com`);
   if (content.includes('Nautic Creator Network')) fail(`${file} contient encore l’ancienne identité`);
 }
+if (/<loc>[^<]*\/(?:creators|createurs)\/[^<]+<\/loc>/.test(read('public/sitemap.xml'))) fail('Le sitemap public contient encore une fiche créateur individuelle.');
 
 if (existsSync(join(root, 'public/assets/source-proofs'))) {
   fail('Les preuves Instagram sont encore présentes dans public/assets/source-proofs.');

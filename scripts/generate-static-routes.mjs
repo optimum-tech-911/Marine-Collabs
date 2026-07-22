@@ -54,17 +54,6 @@ const routes = [
   { route: '/privacy', title: 'Politique de confidentialité', heading: 'Politique de confidentialité', description: 'Cadre de confidentialité de Krew Media.', robots: 'noindex, follow' },
   { route: '/terms', title: 'Conditions d’utilisation', heading: 'Conditions d’utilisation', description: 'Conditions d’utilisation de la plateforme Krew Media.', robots: 'noindex, follow' },
   { route: '/legal', title: 'Mentions légales', heading: 'Mentions légales', description: 'Informations légales de Krew Media.', robots: 'noindex, follow' },
-  ...creators.map((creator) => ({
-    route: `/creators/${creator.slug}`,
-    title: `${creator.displayName} · Créateur maritime`,
-    eyebrow: 'PROFIL CRÉATEUR',
-    heading: creator.displayName,
-    description: `${creator.headline}. ${creator.shortBio}`,
-    image: creator.image,
-    type: 'profile',
-    creator,
-    links: [['Explorer les autres profils', '/creators'], ['Construire un brief', `/campaign-builder?creator=${creator.slug}`]],
-  })),
 ];
 
 const staticStyle = `<style data-static-shell-style>
@@ -75,15 +64,14 @@ function buildStaticShell(meta) {
   const links = (meta.links ?? [['Retour à l’accueil', '/']])
     .map(([label, href]) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`)
     .join('');
-  const facts = meta.creator ? `<ul class="static-route-shell__facts"><li>${escapeHtml(meta.creator.handle)}</li><li>${new Intl.NumberFormat('fr-FR').format(meta.creator.followers)} abonnés visibles</li><li>${new Intl.NumberFormat('fr-FR').format(meta.creator.posts)} publications visibles</li></ul>` : '';
   return `<div id="root"><div class="static-route-shell" data-static-shell>
     <header class="static-route-shell__nav"><a class="static-route-shell__brand" href="/">${escapeHtml(brand.shortName)}</a><nav aria-label="Navigation statique"><a href="/creators">Créateurs</a><a href="/solutions">Solutions</a><a href="/for-brands">Pour les marques</a><a href="/about">À propos</a></nav></header>
-    <main class="static-route-shell__main"><p class="static-route-shell__eyebrow">${escapeHtml(meta.eyebrow ?? 'KREW MEDIA')}</p><h1>${escapeHtml(meta.heading ?? meta.title)}</h1><p class="static-route-shell__description">${escapeHtml(meta.description)}</p>${facts}<div class="static-route-shell__actions">${links}</div><p class="static-route-shell__note">L’interface interactive se charge automatiquement. Les données détaillées et les outils de sélection nécessitent JavaScript.</p></main>
+    <main class="static-route-shell__main"><p class="static-route-shell__eyebrow">${escapeHtml(meta.eyebrow ?? 'KREW MEDIA')}</p><h1>${escapeHtml(meta.heading ?? meta.title)}</h1><p class="static-route-shell__description">${escapeHtml(meta.description)}</p><div class="static-route-shell__actions">${links}</div><p class="static-route-shell__note">L’interface interactive se charge automatiquement. Les outils de sélection nécessitent JavaScript.</p></main>
   </div></div>`;
 }
 
 function setMeta(html, meta) {
-  const { route, title, description, image = '/assets/brand/hero-poster.jpg', robots = 'index, follow', type = 'website', creator } = meta;
+  const { route, title, description, image = '/assets/brand/hero-poster.jpg', robots = 'index, follow', type = 'website' } = meta;
   const fullTitle = `${title} | ${brand.name}`;
   const canonical = `${origin}${route === '/' ? '/' : route}`;
   const absoluteImage = `${origin}${image}`;
@@ -96,18 +84,7 @@ function setMeta(html, meta) {
     .replace(/<meta\s+property="og:image"[^>]*>/, `<meta property="og:image" content="${absoluteImage}" />`)
     .replace('<div id="root"></div>', buildStaticShell(meta));
 
-  const schema = creator ? {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    url: canonical,
-    mainEntity: {
-      '@type': creator.schemaType,
-      name: creator.displayName,
-      description: creator.headline,
-      image: absoluteImage,
-      sameAs: creator.platformUrl ? [creator.platformUrl] : undefined,
-    },
-  } : {
+  const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: brand.name,

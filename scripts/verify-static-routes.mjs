@@ -3,12 +3,10 @@ import path from 'node:path';
 
 const root = process.cwd();
 const dist = path.join(root, 'dist');
-const creatorSource = await readFile(path.join(root, 'src/data/creators.ts'), 'utf8');
-const creatorSlugs = [...creatorSource.matchAll(/(?:^|\n)    slug: '([^']+)'/g)].map((match) => match[1]);
 const routes = [
   '/', '/creators', '/solutions', '/for-brands', '/methodology', '/selection',
   '/campaign-builder', '/case-studies', '/about', '/join-the-network', '/contact',
-  '/privacy', '/terms', '/legal', ...creatorSlugs.map((slug) => `/creators/${slug}`),
+  '/privacy', '/terms', '/legal',
 ];
 const errors = [];
 

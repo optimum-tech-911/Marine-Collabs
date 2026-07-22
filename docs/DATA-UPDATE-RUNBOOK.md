@@ -87,10 +87,10 @@ npm run validate
 
 Puis vérifier manuellement :
 
-- carte du créateur
-- profil
+- carte de présentation du créateur
+- page Créateurs
 - sélection
 - campaign builder
 - métadonnées de la route
-- impression du media kit
+- absence de fiche créateur individuelle
 - filtres, sélection clavier et défilement tactile de la carte

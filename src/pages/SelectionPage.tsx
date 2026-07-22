@@ -103,10 +103,10 @@ export function SelectionPage() {
           <div className="selection-v5-cards">
             {shortlist.map((creator, index) => (
               <SectionReveal className="selection-v5-card" delay={index * .035} key={creator.slug}>
-                <Link className="selection-v5-card__media" to={`/creators/${creator.slug}`}>
+                <div className="selection-v5-card__media">
                   <img src={creator.image} alt={`Univers éditorial associé à ${creator.displayName}`} loading={index < 2 ? 'eager' : 'lazy'} />
                   <span>{String(index + 1).padStart(2, '0')}</span>
-                </Link>
+                </div>
                 <div className="selection-v5-card__body">
                   <div><p>{creator.handle}</p><h3>{creator.displayName}</h3><span>{creator.categories.map(categoryFr).join(' · ')}</span></div>
                   <p>{creator.headline}</p>
@@ -117,7 +117,6 @@ export function SelectionPage() {
                   </dl>
                   <div className="selection-v5-card__status"><EvidenceBadge evidence={creator.viewEstimate.evidence}/></div>
                   <div className="selection-v5-card__actions">
-                    <Link className="text-link" to={`/creators/${creator.slug}`}>Ouvrir le profil <ArrowRight size={15}/></Link>
                     <button type="button" onClick={() => removeCreator(creator.slug)}><Trash2 size={15}/> Retirer</button>
                   </div>
                 </div>

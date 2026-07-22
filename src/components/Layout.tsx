@@ -11,6 +11,7 @@ import { WorkingPrototypeBanner } from './WorkingPrototypeBanner';
 import { AnalyticsTracker } from './AnalyticsTracker';
 import { DocumentLocalization } from './DocumentLocalization';
 import { ScrollMotion } from './ScrollMotion';
+import { GlobalContactDock } from './GlobalContactDock';
 
 export function Layout() {
   const location = useLocation();
@@ -34,6 +35,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <GlobalContactDock />
       <WorkingPrototypeBanner />
       <ShortlistDrawer />
     </>

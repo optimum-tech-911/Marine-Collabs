@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { brand } from '../config/brand';
-import { creatorBySlug } from '../data/creators';
 import { equivalentPath, parseLocalizedRoute, type Locale } from '../i18n/routes';
 
 type Meta = {
   title: string;
   description: string;
   image?: string;
-  type?: 'website' | 'profile';
+  type?: 'website';
   robots?: string;
 };
 
@@ -103,31 +102,6 @@ export function RouteMeta() {
       email: brand.email,
       description: locale === 'fr' ? brand.descriptor : brand.descriptorEn,
     };
-
-    if (parsed.key === 'creator') {
-      const slug = parsed.slug;
-      const creator = slug ? creatorBySlug.get(slug) : undefined;
-      if (creator) {
-        meta = {
-          title: `${creator.displayName} · ${creator.handle}`,
-          description: locale === 'fr' ? `${creator.headline}. ${creator.shortBio}` : `${creator.displayName} is part of Krew Media's selected maritime creator network. Request a commercial profile and media kit.`,
-          image: creator.image,
-          type: 'profile',
-        };
-        schema = {
-          '@context': 'https://schema.org',
-          '@type': 'ProfilePage',
-          url: `${origin}${location.pathname}`,
-          mainEntity: {
-            '@type': creator.schemaType,
-            name: creator.displayName,
-            description: locale === 'fr' ? creator.headline : `${creator.displayName}, maritime creator represented by Krew Media.`,
-            image: `${origin}${creator.image}`,
-            sameAs: creator.platforms[0]?.url ? [creator.platforms[0].url] : undefined,
-          },
-        };
-      }
-    }
 
     const resolved = meta ?? { title: brand.shortName, description: brand.descriptor };
     const canonicalUrl = `${origin}${location.pathname === '/' ? '/' : location.pathname}`;

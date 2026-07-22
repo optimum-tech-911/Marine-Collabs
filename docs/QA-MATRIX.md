@@ -32,17 +32,13 @@
 - [ ] casting guidé sur plusieurs objectifs
 - [ ] ajout/retrait avec clavier
 
-## Profil créateur
+## Présentation des créateurs
 
-- [ ] image hero ne déforme pas le sujet
-- [ ] nom ne déborde pas
-- [ ] badge de preuve correct
-- [ ] lightbox : Tab, Shift+Tab, Échap, flèches
-- [ ] CTA media kit conserve le créateur
-- [ ] CTA campagne conserve le créateur
-- [ ] sidebar sticky desktop
-- [ ] CTA bottom mobile
-- [ ] impression A4 lisible
+- [ ] aucune carte ne mène vers une fiche individuelle
+- [ ] les visuels `placeholder` ne sont pas présentés comme portraits officiels
+- [ ] ajout et retrait de la shortlist au clavier
+- [ ] le radar reste animé, lisible et sans panneau de détails
+- [ ] les anciennes URL individuelles redirigent vers la page Créateurs
 
 ## Sélection
 
@@ -74,7 +70,7 @@
 - [ ] intent marque
 - [ ] intent rendez-vous
 - [ ] intent créateur
-- [ ] media kit avec créateur présélectionné
+- [ ] sélection de créateurs reprise dans la demande
 - [ ] consentement obligatoire
 - [ ] aucun envoi automatique non annoncé
 - [ ] email contient les champs attendus

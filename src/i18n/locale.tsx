@@ -42,5 +42,5 @@ export function useLocale() {
 
 export function useLocalizedPath() {
   const { locale } = useLocale();
-  return (key: Parameters<typeof localizedPath>[1], slug?: string) => localizedPath(locale, key, slug);
+  return (key: Parameters<typeof localizedPath>[1]) => localizedPath(locale, key);
 }

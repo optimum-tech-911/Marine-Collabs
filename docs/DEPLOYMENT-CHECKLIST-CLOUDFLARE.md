@@ -33,8 +33,6 @@ Tester directement :
 ```text
 /
 /creators
-/creators/meg-slmn
-/creators/best-boat-deals
 /selection
 /campaign-builder
 /methodology
@@ -50,7 +48,7 @@ Vérifier :
 - CSP et chargement des assets
 - formulaires
 - stockage local
-- impression media kit
+- absence de fiche créateur individuelle
 - sitemap.xml
 - robots.txt
 - llms.txt

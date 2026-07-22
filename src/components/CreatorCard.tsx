@@ -1,5 +1,4 @@
-import { ArrowUpRight, Bookmark, Check, Eye, Layers3, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Bookmark, Check, Eye, Layers3, Users } from 'lucide-react';
 import { useShortlist } from '../context/ShortlistContext';
 import { categoryFr } from '../lib/category';
 import { formatCompact, formatRange } from '../lib/format';
@@ -14,9 +13,9 @@ export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: 
     <article
       className="creator-card-v4"
     >
-      <Link className="creator-card-v4__media" to={`/creators/${creator.slug}`}>
+      <div className="creator-card-v4__media">
         <span className="creator-card-v4__avatar-ring">
-          <img className="creator-card-v4__image creator-card-v4__image--primary" src={creator.image} alt={`Photo de profil publique de ${creator.displayName}`} loading="lazy" decoding="async" />
+          <img className="creator-card-v4__image creator-card-v4__image--primary" src={creator.image} alt={`Visuel de présentation de ${creator.displayName}`} loading="lazy" decoding="async" />
         </span>
         <span className="creator-card-v4__veil" aria-hidden="true" />
         <div className="creator-card-v4__media-top">
@@ -25,13 +24,12 @@ export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: 
         </div>
         <div className="creator-card-v4__media-bottom">
           <span><Layers3 size={15}/>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</span>
-          <span>Voir le profil <ArrowUpRight size={15}/></span>
         </div>
-      </Link>
+      </div>
 
       <div className="creator-card-v4__body">
         <div className="creator-card-v4__identity">
-          <Link to={`/creators/${creator.slug}`}><h3>{creator.displayName}{creator.verifiedProfile ? <span className="creator-card-v4__verified" title="Compte public vérifié au moment de la capture"><Check size={16} aria-label="Compte public vérifié"/></span> : null}</h3><p>{creator.handle}</p></Link>
+          <div><h3>{creator.displayName}{creator.verifiedProfile ? <span className="creator-card-v4__verified" title="Compte public vérifié au moment de la capture"><Check size={16} aria-label="Compte public vérifié"/></span> : null}</h3><p>{creator.handle}</p></div>
           <button type="button" className={`creator-card-v4__save${selected ? ' is-selected' : ''}`} onClick={() => toggleCreator(creator.slug)} aria-pressed={selected} aria-label={selected ? `Retirer ${creator.displayName}` : `Ajouter ${creator.displayName}`}><Bookmark size={18} fill={selected ? 'currentColor' : 'none'}/></button>
         </div>
         <p className="creator-card-v4__headline">{creator.headline}</p>
@@ -39,7 +37,7 @@ export function CreatorCard({ creator, index = 0 }: { creator: Creator; index?: 
           <div><Users size={17}/><span><strong>{formatCompact(creator.followers)}</strong><small>abonnés</small></span></div>
           <div><Eye size={17}/><span><strong>{formatRange(creator.viewEstimate.low, creator.viewEstimate.high)}</strong><small>{creator.viewEstimate.evidence === 'verified' ? 'vues / 30 j' : 'vues estimées / 30 j'}</small></span></div>
         </div>
-        <div className="creator-card-v4__footer"><EvidenceBadge evidence={creator.viewEstimate.evidence}/><Link to={`/creators/${creator.slug}`}>Découvrir <ArrowUpRight size={15}/></Link></div>
+        <div className="creator-card-v4__footer"><EvidenceBadge evidence={creator.viewEstimate.evidence}/></div>
       </div>
     </article>
   );

@@ -6,7 +6,6 @@ import { equivalentPath, localizedPath, parseLocalizedRoute, type Locale } from 
 
 const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
 const CreatorsPage = lazy(() => import('./pages/CreatorsPage').then((module) => ({ default: module.CreatorsPage })));
-const CreatorDetailPage = lazy(() => import('./pages/CreatorDetailPage').then((module) => ({ default: module.CreatorDetailPage })));
 const SolutionsPage = lazy(() => import('./pages/SolutionsPage').then((module) => ({ default: module.SolutionsPage })));
 const ForBrandsPage = lazy(() => import('./pages/ForBrandsPage').then((module) => ({ default: module.ForBrandsPage })));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage').then((module) => ({ default: module.CaseStudiesPage })));
@@ -57,7 +56,7 @@ function localizedRoutes(locale: Locale) {
   return <Route path={locale} element={<LocaleGuard locale={locale}><Layout key={locale} /></LocaleGuard>}>
     <Route index element={<HomePage />} />
     <Route path={creatorPath} element={<CreatorsPage />} />
-    <Route path={`${creatorPath}/:slug`} element={<CreatorDetailPage />} />
+    <Route path={`${creatorPath}/:slug`} element={<Navigate to={`/${locale}/${creatorPath}/`} replace />} />
     <Route path="solutions" element={<SolutionsPage />} />
     <Route path={locale === 'fr' ? 'pour-les-marques' : 'for-brands'} element={<ForBrandsPage />} />
     <Route path={locale === 'fr' ? 'creer-une-campagne' : 'build-a-campaign'} element={<ContactPage />} />
