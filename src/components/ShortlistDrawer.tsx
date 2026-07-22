@@ -1,6 +1,7 @@
 import { ArrowRight, Columns3, Trash2, X } from 'lucide-react';
 import { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ContactLink } from './ContactLink';
 import { useShortlist } from '../context/ShortlistContext';
 import { useDialogA11y } from '../hooks/useDialogA11y';
 import { formatCompact } from '../lib/format';
@@ -64,17 +65,17 @@ export function ShortlistDrawer() {
             </div>
 
             <div className="drawer-footer">
-              <Link
+              <ContactLink
                 className={`button button--primary button--block${shortlist.length ? '' : ' button--disabled'}`}
-                to={shortlist.length ? '/campaign-builder' : '#'}
+                placement="shortlist_contact"
                 aria-disabled={!shortlist.length}
                 onClick={(event) => {
                   if (!shortlist.length) event.preventDefault();
                   else close();
                 }}
               >
-                Continuer avec cette sélection <ArrowRight size={17}/>
-              </Link>
+                Parler à Adrien avec cette sélection <ArrowRight size={17}/>
+              </ContactLink>
               <p>Les coordonnées privées des créateurs ne sont pas exposées. L’agence reste votre point de contact.</p>
             </div>
           </aside>

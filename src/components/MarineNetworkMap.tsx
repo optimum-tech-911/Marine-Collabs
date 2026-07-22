@@ -9,7 +9,7 @@ import { MarineRadar } from './MarineRadar';
 
 const worldMapUrl = new URL('../../world_map_true_transparent_2400x1200.png', import.meta.url).href;
 
-type ZoneFilter = 'all' | CreatorMapZone;
+type ZoneFilter = 'all' | CreatorMapZone | 'france';
 
 const filters: { id: ZoneFilter; label: string }[] = [
   { id: 'all', label: 'Tous' },
@@ -24,6 +24,8 @@ const evidenceLabels: Record<CreatorLocationEvidence, string> = {
   'content-visible': 'Zone visible dans les contenus',
   'roster-region': 'Région indicative du roster',
 };
+
+const frenchCreators = creators.filter((creator) => creator.operatingRegions.includes('France'));
 
 type PinShift = [number, number];
 type PinPoint = { x: number; y: number };
@@ -104,7 +106,11 @@ export function MarineNetworkMap() {
   const t = (value: string) => locale === 'en' ? toEnglish(value) : value;
   const [zone, setZone] = useState<ZoneFilter>('all');
   const [selectedSlug, setSelectedSlug] = useState('meg-slmn');
-  const visibleCreators = zone === 'all' ? creators : creators.filter((creator) => creator.mapLocation.zone === zone);
+  const visibleCreators = zone === 'all'
+    ? creators
+    : zone === 'france'
+      ? frenchCreators
+      : creators.filter((creator) => creator.mapLocation.zone === zone);
   const pinShifts = computePinShifts(visibleCreators);
   const selected = visibleCreators.find((creator) => creator.slug === selectedSlug) ?? visibleCreators[0] ?? creators[0];
 
@@ -129,10 +135,17 @@ export function MarineNetworkMap() {
           <div className="marine-network-map__surface">
             <div className="marine-network-map__grid" aria-hidden="true" />
             <img className="marine-network-map__world marine-network-map__world--true" src={worldMapUrl} alt="" aria-hidden="true" />
-            <div className="marine-network-map__topline"><span><ScanLine size={15}/> {visibleCreators.length} {locale === 'en' ? `profile${visibleCreators.length > 1 ? 's' : ''} in this region` : `profil${visibleCreators.length > 1 ? 's' : ''} dans la zone`}</span><span>{t('Coordonnées représentatives · jamais en temps réel')}</span></div>
+            <div className="marine-network-map__topline"><span><ScanLine size={15}/> {t('Profils dans cette zone')}</span><span>{t('Coordonnées représentatives · jamais en temps réel')}</span></div>
             <div className="marine-network-map__compass" aria-hidden="true"><Compass size={18}/><span>N</span></div>
             <MarineRadar className="marine-network-map__radar" />
             <svg className="marine-network-map__routes" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path d="M80 350C220 140 360 130 485 260S730 350 935 150"/><path d="M70 410C270 460 440 385 560 290S735 160 930 300"/></svg>
+
+            <button
+              className={`marine-network-map__france-trigger${zone === 'france' ? ' is-active' : ''}`}
+              type="button"
+              aria-pressed={zone === 'france'}
+              onClick={() => { setZone('france'); const first = frenchCreators[0]; if (first) setSelectedSlug(first.slug); }}
+            >{t('Créateurs français')}</button>
 
             {visibleCreators.map((creator) => <span className="marine-network-map__pin-group" key={creator.slug}>
               <span className="marine-network-map__anchor" style={projectedStyle(creator.mapLocation.longitude, creator.mapLocation.latitude)} aria-hidden="true"><i /></span>

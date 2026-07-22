@@ -63,7 +63,6 @@ export function HomePage() {
         </div>
 
         <div className="container home-v4-metrics">
-          <div><strong><CountUp value={networkMetrics.creatorCount}/></strong><span>créateurs sélectionnés</span></div>
           <div><strong><CountUp value={networkMetrics.combinedFollowers} formatter={(value) => `${formatCompact(Math.round(value))}+`}/></strong><span>abonnés Instagram cumulés</span></div>
           <div><strong><CountUp value={networkMetrics.combinedPosts} formatter={(value) => formatFull(Math.round(value))}/></strong><span>publications visibles</span></div>
           <div><strong><CountUp value={networkMetrics.verifiedMonthlyViews} formatter={(value) => formatCompact(Math.round(value))}/></strong><span>vues vérifiées sur 30 jours*</span></div>
@@ -106,7 +105,7 @@ export function HomePage() {
         <div className="container home-v4-manifesto__inner">
           <SectionReveal>
             <p className="eyebrow eyebrow--light">NOTRE CONVICTION</p>
-            <h2>« La meilleure pub, c’est celle qui n’en est pas une. »</h2>
+            <h2>« Une campagne crédible commence dans le réel. »</h2>
             <p>Des créateurs parlent de votre marque à leur communauté. Krew Media sélectionne les bonnes voix, encadre les contenus et orchestre leur diffusion — sans limite de créateurs ni de frontières.</p>
             <Link className="text-link text-link--light" to="/for-brands">Voir comment une campagne est construite <ArrowRight size={17}/></Link>
           </SectionReveal>
@@ -137,7 +136,7 @@ export function HomePage() {
         <div className="container">
           <SectionReveal className="section-header home-v4-section-header">
             <div><p className="eyebrow eyebrow--light">LE RÉSEAU</p><h2>Les créateurs qui vivent réellement le nautisme.</h2></div>
-            <div><p>Forte audience, expertise précise ou crédibilité terrain : chaque profil est sélectionné pour une raison exploitable par les marques.</p><Link className="text-link text-link--light" to="/creators">Voir les 12 profils <ArrowRight size={17}/></Link></div>
+            <div><p>Forte audience, expertise précise ou crédibilité terrain : chaque profil est sélectionné pour une raison exploitable par les marques.</p><Link className="text-link text-link--light" to="/creators">Voir le réseau <ArrowRight size={17}/></Link></div>
           </SectionReveal>
           <div className="creator-grid creator-grid--three home-v4-roster__grid">{featured.slice(0, 3).map((creator, index) => <CreatorCard creator={creator} index={index} key={creator.slug}/>)}</div>
         </div>

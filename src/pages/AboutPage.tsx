@@ -1,5 +1,4 @@
 import { ArrowRight, Anchor, BadgeCheck, Network, Route, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { ContactLink } from '../components/ContactLink';
 import { SectionReveal } from '../components/SectionReveal';
 import { founderProfile } from '../data/founder';
@@ -20,7 +19,7 @@ export function AboutPage() {
 
       <section className="section about-v4-founder"><div className="container about-v4-founder__grid"><SectionReveal className="about-v4-founder__media"><img src="/assets/brand/adrien-cazanave.jpg" alt="Adrien Cazanave à bord d’un voilier" loading="lazy" decoding="async"/></SectionReveal><SectionReveal delay={.05}><p className="eyebrow">{founderProfile.eyebrow}</p><h2>Adrien ne parle pas du nautisme de l’extérieur : il en vit.</h2><p>{founderProfile.biography} Son compte {founderProfile.handle} a démontré qu’une parole directe, utile et crédible pouvait créer de l’attention dans un marché réputé difficile.</p><blockquote>{founderProfile.salesLine}</blockquote><div className="about-v4-founder__facts">{founderProfile.claims.slice(0, 4).map((claim) => <span title={claim.note} key={claim.label}><ShieldCheck size={16}/>{claim.value}</span>)}</div></SectionReveal></div></section>
 
-      <section className="about-v4-cta"><div className="container about-v4-cta__inner"><div><p className="eyebrow">TRAVAILLER AVEC LE RÉSEAU</p><h2>Apportez un objectif. Repartez avec une stratégie de créateurs.</h2></div><Link className="button button--dark button--hero" to="/campaign-builder">Construire une campagne <ArrowRight size={18}/></Link></div></section>
+      <section className="about-v4-cta"><div className="container about-v4-cta__inner"><div><p className="eyebrow">TRAVAILLER AVEC LE RÉSEAU</p><h2>Apportez un objectif. Repartez avec une stratégie de créateurs.</h2></div><ContactLink className="button button--dark button--hero" placement="about_footer">Parler à Adrien <ArrowRight size={18}/></ContactLink></div></section>
     </>
   );
 }

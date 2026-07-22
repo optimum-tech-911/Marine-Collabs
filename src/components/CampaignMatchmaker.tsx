@@ -92,7 +92,7 @@ export function CampaignMatchmaker() {
       </div>
 
       {revealed ? <div className="matchmaker-v5__results" aria-live="polite">
-        <div className="matchmaker-v5__result-heading"><CheckCircle2 size={18}/><p><strong>Trois profils à examiner en priorité</strong><span>Suggestion indicative calculée à partir du dataset public.</span></p></div>
+        <div className="matchmaker-v5__result-heading"><CheckCircle2 size={18}/><p><strong>Profils à examiner en priorité</strong><span>Suggestion indicative calculée à partir du dataset public.</span></p></div>
         <div className="matchmaker-v5__cards">
           {matches.map(({ creator, reasons }, index) => {
             const selected = hasCreator(creator.slug);

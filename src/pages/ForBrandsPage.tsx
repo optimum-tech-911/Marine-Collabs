@@ -2,7 +2,6 @@ import { ArrowRight, ArrowUpRight, BarChart3, CalendarDays, CheckCircle2, Clipbo
 import { Link } from 'react-router-dom';
 import { ContactLink } from '../components/ContactLink';
 import { SectionReveal } from '../components/SectionReveal';
-import { creators } from '../data/creators';
 import { networkMetrics } from '../data/network';
 import { industryProof } from '../data/industryProof';
 import { founderProfile } from '../data/founder';
@@ -19,7 +18,7 @@ export function ForBrandsPage() {
             <h1>Faites parler de votre marque par ceux que le nautisme écoute déjà.</h1>
             <p>Krew Media construit et coordonne des campagnes avec des créateurs spécialisés dans la voile, la plongée, le surf, les bateaux et la vie en mer.</p>
             <div className="brands-v4-hero__actions"><ContactLink className="button button--primary button--hero" placement="brands_hero">Parler à Adrien <ArrowRight size={18}/></ContactLink><Link className="button button--ghost-light button--hero" to="/creators">Explorer le réseau</Link></div>
-            <div className="brands-v4-hero__proof"><span><Users size={17}/>{creators.length} créateurs</span><span><Eye size={17}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span><span><ShieldCheck size={17}/>Casting piloté par l’agence</span></div>
+            <div className="brands-v4-hero__proof"><span><Users size={17}/>Réseau de créateurs spécialisé</span><span><Eye size={17}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span><span><ShieldCheck size={17}/>Casting piloté par l’agence</span></div>
           </div>
           <div className="brands-v4-hero__media"><img src="/assets/brand/fieldwork/campaign-conversation.jpg" alt="Deux professionnels préparant une campagne autour d’une carte marine"/><div><span>01</span><strong>Un seul brief</strong><small>Un casting, des contenus et une coordination centralisés.</small></div></div>
         </div>

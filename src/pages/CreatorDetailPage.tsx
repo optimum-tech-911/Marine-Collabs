@@ -51,7 +51,7 @@ export function CreatorDetailPage() {
         <div className="container">
           <div className="profile-lite__topline">
             <Link to="/creators"><ArrowLeft size={16}/> Retour au réseau</Link>
-            <span>Profil {String(creators.findIndex((item) => item.slug === creator.slug) + 1).padStart(2, '0')} / {String(creators.length).padStart(2, '0')}</span>
+            <span>Fiche créateur</span>
           </div>
 
           <div className="profile-lite__layout">
@@ -102,7 +102,7 @@ export function CreatorDetailPage() {
                 <ContactLink className="button button--dark" placement="creator_profile"><MessageCircle size={17}/> Parler à Adrien</ContactLink>
                 <a className="profile-lite__email" href={mediaKitEmailUrl}><Mail size={16}/> Media kit par email</a>
               </div>
-              <Link className="profile-lite__brief-link" to={`/campaign-builder?creator=${creator.slug}`}>Préparer un brief avec ce profil <ArrowRight size={16}/></Link>
+              <ContactLink className="profile-lite__brief-link" placement="creator_profile_followup">Parler à Adrien au sujet de ce profil <ArrowRight size={16}/></ContactLink>
             </section>
           </div>
 
@@ -115,7 +115,7 @@ export function CreatorDetailPage() {
 
       {related.length ? <section className="profile-lite__related">
         <div className="container">
-          <div className="profile-lite__related-heading"><div><p className="eyebrow">À VOIR AUSSI</p><h2>Trois profils complémentaires.</h2></div><Link to="/creators">Voir tout le réseau <ArrowRight size={16}/></Link></div>
+          <div className="profile-lite__related-heading"><div><p className="eyebrow">À VOIR AUSSI</p><h2>Profils complémentaires.</h2></div><Link to="/creators">Voir tout le réseau <ArrowRight size={16}/></Link></div>
           <div className="profile-lite__related-grid">{related.map((item) => <Link to={`/creators/${item.slug}`} key={item.slug}><img src={item.image} alt="" loading="lazy"/><span><strong>{item.displayName}</strong><small>{item.handle} · {formatCompact(item.followers)} abonnés</small></span><ArrowRight size={17}/></Link>)}</div>
         </div>
       </section> : null}

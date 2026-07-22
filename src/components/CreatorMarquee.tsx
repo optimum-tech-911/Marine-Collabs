@@ -39,7 +39,7 @@ export function CreatorMarquee() {
     <section className="creator-marquee" aria-labelledby="creator-marquee-title">
       <div className="container creator-marquee__heading">
         <div><p className="eyebrow">LE RÉSEAU, EN MOUVEMENT</p><h2 id="creator-marquee-title">Nos créateurs. Leurs audiences. Votre objectif.</h2></div>
-        <p>Douze profils réels, avec des chiffres dont le niveau de preuve reste visible. Survolez le ruban pour le mettre en pause.</p>
+        <p>Des profils réels, avec des chiffres dont le niveau de preuve reste visible. Survolez le ruban pour le mettre en pause.</p>
       </div>
       <div className="creator-marquee__rails" aria-label="Profils créateurs défilants">
         <MarqueeRail items={first} />
@@ -47,7 +47,7 @@ export function CreatorMarquee() {
       </div>
       <div className="container creator-marquee__footer">
         <p>Un casting se construit selon l’objectif de campagne, pas uniquement selon le nombre d’abonnés.</p>
-        <Link to="/creators">Explorer les 12 fiches <ArrowRight size={16}/></Link>
+        <Link to="/creators">Explorer le réseau <ArrowRight size={16}/></Link>
       </div>
     </section>
   );

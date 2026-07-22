@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { EvidenceBadge } from '../components/EvidenceBadge';
+import { ContactLink } from '../components/ContactLink';
 import { SectionReveal } from '../components/SectionReveal';
 import { useShortlist } from '../context/ShortlistContext';
 import { categoryFr } from '../lib/category';
@@ -82,7 +83,7 @@ export function SelectionPage() {
             <h1>Comparez les profils avant de figer le brief.</h1>
             <p>Cette sélection ne vaut pas disponibilité commerciale. Elle sert à structurer une recommandation avec l’agence.</p>
           </div>
-          <Link className="button button--primary button--hero" to="/campaign-builder">Continuer vers le brief <ArrowRight size={18} /></Link>
+          <ContactLink className="button button--primary button--hero" placement="selection_top">Parler à Adrien <ArrowRight size={18} /></ContactLink>
         </div>
         <div className="container selection-v5-metrics">
           <div><Users size={18}/><span><strong>{shortlist.length}</strong><small>profils sélectionnés</small></span></div>
@@ -155,7 +156,7 @@ export function SelectionPage() {
 
           <SectionReveal className="selection-v5-cta">
             <div><p className="eyebrow">PRÊT À CADRER LA CAMPAGNE ?</p><h2>Le casting est une hypothèse. Le brief permet de la valider.</h2></div>
-            <Link className="button button--dark button--hero" to="/campaign-builder">Construire le brief <ArrowRight size={18}/></Link>
+            <ContactLink className="button button--dark button--hero" placement="selection_bottom">Parler à Adrien <ArrowRight size={18}/></ContactLink>
           </SectionReveal>
         </div>
       </section>

@@ -1,7 +1,8 @@
 import { ArrowRight, Search, SlidersHorizontal, Sparkles, Users, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { CampaignMatchmaker } from '../components/CampaignMatchmaker';
+import { ContactLink } from '../components/ContactLink';
 import { CreatorCard } from '../components/CreatorCard';
 import { SectionReveal } from '../components/SectionReveal';
 import { creators } from '../data/creators';
@@ -83,7 +84,7 @@ export function CreatorsPage() {
             <p className="eyebrow eyebrow--light">LE RÉSEAU DES CRÉATEURS MARITIMES</p>
             <h1>Des voix crédibles, choisies pour leur terrain.</h1>
             <p>Des créateurs à forte audience, des micro-créateurs spécialisés et des professionnels en activité — sélectionnés pour leur participation authentique à la culture maritime.</p>
-            <div className="creators-v4-hero__chips"><span><Users size={16}/>{creators.length} profils</span><span><Sparkles size={16}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span></div>
+            <div className="creators-v4-hero__chips"><span><Users size={16}/>Réseau sélectionné</span><span><Sparkles size={16}/>{formatCompact(networkMetrics.combinedFollowers)}+ abonnés cumulés</span></div>
           </div>
           <div className="creators-v4-hero__collage" aria-hidden="true">
             {heroScenes.map((scene, index) => <img key={scene} src={scene} alt="" className={`creators-v4-hero__image creators-v4-hero__image--${index + 1}`}/>) }
@@ -102,8 +103,8 @@ export function CreatorsPage() {
           <div className="creators-v4-filter-group">
             <span className="creators-v4-filter-label">Catégorie</span>
             <div className="category-filter creators-v4-category" role="group" aria-label="Filtrer par catégorie">
-              <button className={category === 'All' ? 'active' : ''} type="button" aria-pressed={category === 'All'} onClick={() => setCategory('All')}>Tous <span>{creators.length}</span></button>
-              {categories.map((item) => <button className={category === item ? 'active' : ''} key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{categoryFr(item)} <span>{creators.filter((creator) => creator.categories.includes(item)).length}</span></button>)}
+              <button className={category === 'All' ? 'active' : ''} type="button" aria-pressed={category === 'All'} onClick={() => setCategory('All')}>Tous</button>
+              {categories.map((item) => <button className={category === item ? 'active' : ''} key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{categoryFr(item)}</button>)}
             </div>
           </div>
 
@@ -116,13 +117,13 @@ export function CreatorsPage() {
             </div>
           </div>
 
-          <div className="creators-v4-summary"><p><strong>{filteredCreators.length}</strong> profil{filteredCreators.length > 1 ? 's' : ''} affiché{filteredCreators.length > 1 ? 's' : ''}</p>{hasFilters ? <button className="text-button" type="button" onClick={resetFilters}>Réinitialiser</button> : null}</div>
+          <div className="creators-v4-summary"><p>Profils correspondant à votre recherche</p>{hasFilters ? <button className="text-button" type="button" onClick={resetFilters}>Réinitialiser</button> : null}</div>
 
           {filteredCreators.length ? <div className="creator-grid creator-grid--three creators-v4-grid">{filteredCreators.map((creator, index) => <CreatorCard key={creator.slug} creator={creator} index={index}/>)}</div> : <div className="no-results"><span>00</span><h2>Aucun profil ne correspond.</h2><p>Essayez une autre catégorie ou retirez les termes de recherche.</p><button className="button button--dark" type="button" onClick={resetFilters}>Afficher tous les créateurs</button></div>}
 
           <SectionReveal className="creators-v4-brief-cta">
             <div><p className="eyebrow">UN CASTING SUR MESURE</p><h2>Vous ne savez pas encore quels profils choisir ?</h2><p>Donnez-nous l’objectif, le marché et le calendrier. Nous vous proposons une sélection cohérente.</p></div>
-            <Link className="button button--dark" to="/campaign-builder">Construire le brief <ArrowRight size={17}/></Link>
+            <ContactLink className="button button--dark" placement="creators_footer">Parler à Adrien <ArrowRight size={17}/></ContactLink>
           </SectionReveal>
 
         </div>

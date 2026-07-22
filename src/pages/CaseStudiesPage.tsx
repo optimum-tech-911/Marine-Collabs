@@ -1,5 +1,5 @@
 import { ArrowRight, BarChart3, CheckCircle2, FileText, LockKeyhole } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ContactLink } from '../components/ContactLink';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
 
@@ -42,7 +42,7 @@ export function CaseStudiesPage() {
           <span>DES PREUVES, PAS DES PLACEHOLDERS</span>
           <h2>Aucun cas client n’a été fabriqué pour embellir cette version.</h2>
           <p>Ajoutez la première campagne lorsque la marque, les créateurs, les métriques, le témoignage et les droits d’affichage sont confirmés.</p>
-          <Link className="button button--dark" to="/campaign-builder">Construire la première campagne <ArrowRight size={17} /></Link>
+          <ContactLink className="button button--dark" placement="case_studies_contact">Parler à Adrien <ArrowRight size={17} /></ContactLink>
         </div>
       </section>
     </>

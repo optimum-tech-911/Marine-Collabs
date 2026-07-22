@@ -34,11 +34,11 @@ const staticMeta: Record<string, Record<Locale, Meta>> = {
     image: '/assets/brand/hero-poster.jpg',
   }, en: { title: 'For brands', description: 'Build a maritime campaign with a curated creator selection, clear scope and one accountable partner.', image: '/assets/brand/hero-poster.jpg' } },
   campaign: { fr: {
-    title: 'Créer une campagne',
-    description: 'Transformez votre objectif en brief structuré avec marchés, formats, droits et créateurs sélectionnés.',
+    title: 'Parler à Krew Media',
+    description: 'Échangez directement avec Krew Media au sujet de votre marque et de votre projet nautique.',
     image: '/assets/brand/hero-poster.jpg',
     robots: 'noindex, follow',
-  }, en: { title: 'Build a campaign', description: 'Turn your objective into a structured brief with markets, formats, rights and selected creators.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
+  }, en: { title: 'Talk to Krew Media', description: 'Talk directly with Krew Media about your brand and maritime project.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
   cases: { fr: {
     title: 'Cas clients',
     description: 'Une structure rigoureuse pour présenter uniquement des résultats réels, autorisés et documentés.',
@@ -51,15 +51,15 @@ const staticMeta: Record<string, Record<Locale, Meta>> = {
   }, en: { title: 'About Krew Media', description: 'An agency at the intersection of maritime culture, creator work and brand challenges.', image: '/assets/brand/adrien-cazanave.jpg' } },
   join: { fr: {
     title: 'Rejoindre le réseau',
-    description: 'Candidatez pour rejoindre un réseau sélectionné de créateurs maritimes.',
+    description: 'Présentez votre univers maritime à Krew Media par WhatsApp ou email.',
     image: '/assets/brand/hero-poster.jpg',
-  }, en: { title: 'Join the network', description: 'Apply to join a selected network of maritime creators.', image: '/assets/brand/hero-poster.jpg' } },
+  }, en: { title: 'Join the network', description: 'Introduce your maritime world to Krew Media by WhatsApp or email.', image: '/assets/brand/hero-poster.jpg' } },
   contact: { fr: {
     title: 'Contact',
-    description: 'Parlez à Krew Media de votre marque, de votre campagne ou de votre candidature.',
+    description: 'Parlez directement à Krew Media par WhatsApp ou email.',
     image: '/assets/brand/hero-poster.jpg',
     robots: 'noindex, follow',
-  }, en: { title: 'Contact', description: 'Talk to Krew Media about your brand, campaign or creator application.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
+  }, en: { title: 'Contact', description: 'Talk directly to Krew Media by WhatsApp or email.', image: '/assets/brand/hero-poster.jpg', robots: 'noindex, follow' } },
   selection: { fr: {
     title: 'Sélection de créateurs',
     description: 'Comparez les créateurs présélectionnés avant de transformer le casting en brief de campagne.',

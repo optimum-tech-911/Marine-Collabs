@@ -10,7 +10,7 @@ const content = {
   terms: {
     eyebrow: 'CONDITIONS',
     title: "Conditions d’utilisation — version à finaliser",
-    description: 'Ajoutez les conditions définitives qui encadrent le site public, les formulaires et les futurs espaces privés.',
+    description: 'Cette page présente les informations applicables au site vitrine Krew Media et à ses échanges directs.',
   },
   legal: {
     eyebrow: 'MENTIONS LÉGALES',
@@ -27,7 +27,7 @@ export function LegalPage({ type }: { type: keyof typeof content }) {
       <section className="section legal-content">
         <div className="container prose">
           <h2>Avant la mise en production</h2>
-          <p>Cette version frontend conserve les formulaires localement et ne transmet pas encore de données. Dès qu’un backend, un CRM, des outils d’analyse, des cookies ou des comptes utilisateurs sont ajoutés, les documents doivent décrire précisément ces traitements.</p>
+          <p>Cette version vitrine ne collecte ni ne transmet de données via le site. Les échanges se font directement par WhatsApp ou email avec Krew Media.</p>
           <h2>Identité de travail</h2>
           <p><strong>Plateforme :</strong> {brand.name}<br /><strong>Domaine :</strong> {brand.domain}<br /><strong>Contact :</strong> {brand.email}</p>
           <h2>Informations à remplacer</h2>
