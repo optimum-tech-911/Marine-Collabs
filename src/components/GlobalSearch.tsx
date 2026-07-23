@@ -46,9 +46,9 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
             <div className="command-dialog__meta"><span>{query ? `${results.length} résultat${results.length > 1 ? 's' : ''}` : 'Profils recommandés'}</span><span><Command size={13}/> K pour ouvrir</span></div>
             <div className="command-results">
               {results.map((creator) => (
-                <Link to={`${path('creators')}?q=${encodeURIComponent(creator.displayName)}`} key={creator.slug} onClick={onClose}>
+                <Link to={path('creators')} key={creator.slug} onClick={onClose}>
                   <img src={creator.image} alt="" />
-                  <span className="command-results__copy"><strong>{creator.displayName}</strong><small>{creator.handle} · {creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</small></span>
+                  <span className="command-results__copy"><strong aria-label="Nom du créateur masqué"><span className="protected-name" aria-hidden="true">{creator.displayName}</span></strong><small>Profil via Krew Media · {creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</small></span>
                   <span className="command-results__reach">{formatCompact(creator.followers)}<small>abonnés</small></span>
                   <ArrowUpRight size={17}/>
                 </Link>

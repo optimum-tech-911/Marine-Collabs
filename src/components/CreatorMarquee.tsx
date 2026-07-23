@@ -11,7 +11,7 @@ function MarqueeCard({ creator, duplicate = false }: { creator: (typeof creators
     <article className="creator-marquee__card" aria-hidden={duplicate || undefined}>
       <img src={creator.image} alt="" loading="lazy" decoding="async" />
       <span className="creator-marquee__identity">
-        <strong>{creator.handle}</strong>
+        <strong>Profil via Krew Media</strong>
         <small>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</small>
       </span>
       <span className="creator-marquee__metric"><Users size={14}/><b>{formatCompact(creator.followers)}</b><small>abonnés</small></span>

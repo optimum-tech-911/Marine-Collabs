@@ -18,7 +18,7 @@ export function ContactPage() {
             <p className="eyebrow eyebrow--light">CONTACT DIRECT</p>
             <h1>Parlons directement.</h1>
             <p>Un projet de marque, un créateur en tête ou simplement envie de comprendre notre réseau&nbsp;? Adrien vous répond directement, sans formulaire ni parcours automatisé.</p>
-            {creator ? <div className="contact-v4-hero__creator"><img src={creator.image} alt="" /><span><strong>Profil évoqué</strong><small>{creator.displayName} · {creator.handle}</small></span></div> : null}
+            {creator ? <div className="contact-v4-hero__creator"><img src={creator.image} alt="" /><span><strong>Profil évoqué</strong><small><span className="protected-name" aria-hidden="true">{creator.displayName}</span> · Profil coordonné par Krew Media</small></span></div> : null}
           </div>
           <div className="contact-v4-hero__actions">
             <ContactLink className="button button--primary button--hero" placement="contact_hero_whatsapp"><MessageCircle size={17} />WhatsApp Business · {brand.phone}</ContactLink>

@@ -31,10 +31,10 @@ export function SelectionPage() {
   const exportSelection = () => {
     const quote = (value: string | number) => `"${String(value).replaceAll('"', '""')}"`;
     const rows = [
-      ['Créateur', 'Handle', 'Catégories', 'Abonnés visibles', 'Vues basses / 30 j', 'Vues hautes / 30 j', 'Niveau de preuve', 'Territoires', 'Formats'],
-      ...shortlist.map((creator) => [
-        creator.displayName,
-        creator.handle,
+      ['Créateur', 'Accès agence', 'Catégories', 'Abonnés visibles', 'Vues basses / 30 j', 'Vues hautes / 30 j', 'Niveau de preuve', 'Territoires', 'Formats'],
+      ...shortlist.map((creator, index) => [
+        `Profil ${String(index + 1).padStart(2, '0')}`,
+        'Via Krew Media',
         creator.categories.map(categoryFr).join(' | '),
         creator.followers,
         creator.viewEstimate.low,
@@ -104,11 +104,11 @@ export function SelectionPage() {
             {shortlist.map((creator, index) => (
               <SectionReveal className="selection-v5-card" delay={index * .035} key={creator.slug}>
                 <div className="selection-v5-card__media">
-                  <img src={creator.image} alt={`Univers éditorial associé à ${creator.displayName}`} loading={index < 2 ? 'eager' : 'lazy'} />
+                  <img src={creator.image} alt="Univers éditorial associé à un créateur du réseau" loading={index < 2 ? 'eager' : 'lazy'} />
                   <span>{String(index + 1).padStart(2, '0')}</span>
                 </div>
                 <div className="selection-v5-card__body">
-                  <div><p>{creator.handle}</p><h3>{creator.displayName}</h3><span>{creator.categories.map(categoryFr).join(' · ')}</span></div>
+                  <div><p>Profil présenté par Krew Media</p><h3 aria-label="Nom du créateur masqué"><span className="protected-name" aria-hidden="true">{creator.displayName}</span></h3><span>{creator.categories.map(categoryFr).join(' · ')}</span></div>
                   <p>{creator.headline}</p>
                   <dl>
                     <div><dt>Audience</dt><dd>{formatCompact(creator.followers)}</dd></div>
@@ -135,7 +135,7 @@ export function SelectionPage() {
                 <tbody>
                   {shortlist.map((creator) => (
                     <tr key={creator.slug}>
-                      <th scope="row"><strong>{creator.displayName}</strong><span>{creator.handle}</span></th>
+                      <th scope="row"><strong aria-label="Nom du créateur masqué"><span className="protected-name" aria-hidden="true">{creator.displayName}</span></strong><span>Profil via Krew Media</span></th>
                       <td>{creator.contentFormats.slice(0, 4).join(' · ')}</td>
                       <td>{creator.operatingRegions.join(' · ')}</td>
                       <td>{creator.brandFit.slice(0, 4).join(' · ')}</td>

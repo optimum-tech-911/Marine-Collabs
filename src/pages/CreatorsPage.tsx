@@ -33,7 +33,7 @@ export function CreatorsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = categories.includes(searchParams.get('category') as CreatorCategory) ? searchParams.get('category') as CreatorCategory : 'All';
   const initialAudience = ['all','under-10','10-50','50-100','100-plus'].includes(searchParams.get('audience') ?? '') ? searchParams.get('audience') as AudienceOption : 'all';
-  const initialSort = ['relevance','reach-desc','reach-asc','verified','name'].includes(searchParams.get('sort') ?? '') ? searchParams.get('sort') as SortOption : 'relevance';
+  const initialSort = ['relevance','reach-desc','reach-asc','verified','name'].includes(searchParams.get('sort') ?? '') ? searchParams.get('sort') as SortOption : 'reach-desc';
   const [query, setQuery] = useState(searchParams.get('q') ?? '');
   const [category, setCategory] = useState<'All' | CreatorCategory>(initialCategory);
   const [audience, setAudience] = useState<AudienceOption>(initialAudience);
@@ -44,7 +44,7 @@ export function CreatorsPage() {
     if (query.trim()) next.set('q', query.trim());
     if (category !== 'All') next.set('category', category);
     if (audience !== 'all') next.set('audience', audience);
-    if (sort !== 'relevance') next.set('sort', sort);
+    if (sort !== 'reach-desc') next.set('sort', sort);
     setSearchParams(next, { replace: true });
   }, [audience, category, query, setSearchParams, sort]);
 
@@ -70,10 +70,10 @@ export function CreatorsPage() {
     setQuery('');
     setCategory('All');
     setAudience('all');
-    setSort('relevance');
+    setSort('reach-desc');
   };
 
-  const hasFilters = Boolean(query || category !== 'All' || audience !== 'all' || sort !== 'relevance');
+  const hasFilters = Boolean(query || category !== 'All' || audience !== 'all' || sort !== 'reach-desc');
 
   return (
     <>
@@ -97,7 +97,7 @@ export function CreatorsPage() {
           <CampaignMatchmaker />
           <SectionReveal className="creators-v4-toolbar">
             <label className="search-field creators-v4-search"><Search size={18}/><span className="sr-only">Rechercher</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Nom, spécialité, région ou secteur de marque"/>{query ? <button type="button" onClick={() => setQuery('')} aria-label="Effacer"><X size={16}/></button> : null}</label>
-            <label className="select-field"><SlidersHorizontal size={17}/><span className="sr-only">Trier</span><select value={sort} onChange={(event) => setSort(event.target.value as SortOption)}><option value="relevance">Pertinence</option><option value="reach-desc">Audience décroissante</option><option value="reach-asc">Audience croissante</option><option value="verified">Vues vérifiées</option><option value="name">Nom A–Z</option></select></label>
+            <label className="select-field"><SlidersHorizontal size={17}/><span className="sr-only">Trier</span><select value={sort} onChange={(event) => setSort(event.target.value as SortOption)}><option value="reach-desc">Audience — plus grands en premier</option><option value="relevance">Pertinence</option><option value="reach-asc">Audience croissante</option><option value="verified">Vues vérifiées</option><option value="name">Nom A–Z</option></select></label>
           </SectionReveal>
 
           <div className="creators-v4-filter-group">

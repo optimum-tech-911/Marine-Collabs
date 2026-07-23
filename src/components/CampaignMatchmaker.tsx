@@ -97,7 +97,7 @@ export function CampaignMatchmaker() {
             const selected = hasCreator(creator.slug);
             return <article key={creator.slug}>
               <div className="matchmaker-v5__media"><img src={creator.image} alt="" loading="lazy"/><span>{String(index + 1).padStart(2, '0')}</span></div>
-              <div className="matchmaker-v5__copy"><p>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</p><h3>{creator.displayName}</h3><small>{formatCompact(creator.followers)} abonnés · {creator.handle}</small><ul>{reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul><div><button className={selected ? 'is-selected' : ''} type="button" onClick={() => toggleCreator(creator.slug)} aria-pressed={selected}><Bookmark size={15} fill={selected ? 'currentColor' : 'none'}/>{selected ? 'Sélectionné' : 'Ajouter'}</button></div></div>
+              <div className="matchmaker-v5__copy"><p>{creator.categories[0] ? categoryFr(creator.categories[0]) : 'Créateur maritime'}</p><h3 aria-label="Nom du créateur masqué"><span className="protected-name" aria-hidden="true">{creator.displayName}</span></h3><small>{formatCompact(creator.followers)} abonnés · Profil via Krew Media</small><ul>{reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul><div><button className={selected ? 'is-selected' : ''} type="button" onClick={() => toggleCreator(creator.slug)} aria-pressed={selected}><Bookmark size={15} fill={selected ? 'currentColor' : 'none'}/>{selected ? 'Sélectionné' : 'Ajouter'}</button></div></div>
             </article>;
           })}
         </div>

@@ -47,8 +47,8 @@ export function ShortlistDrawer() {
                     {shortlist.map((creator) => (
                       <article key={creator.slug} className="shortlist-item">
                         <img src={creator.image} alt=""/>
-                        <div><strong>{creator.displayName}</strong><span>{creator.handle}</span><small>{formatCompact(creator.followers)} abonnés</small></div>
-                        <button type="button" className="icon-button" onClick={() => removeCreator(creator.slug)} aria-label={`Retirer ${creator.displayName}`}><X size={17}/></button>
+                        <div><strong aria-label="Nom du créateur masqué"><span className="protected-name" aria-hidden="true">{creator.displayName}</span></strong><span>Profil via Krew Media</span><small>{formatCompact(creator.followers)} abonnés</small></div>
+                        <button type="button" className="icon-button" onClick={() => removeCreator(creator.slug)} aria-label="Retirer ce profil"><X size={17}/></button>
                       </article>
                     ))}
                   </div>
